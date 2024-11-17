@@ -51,6 +51,11 @@ form {
   background-color: rgb(235, 81, 81);
 }
 
+.notice {
+  background-color: goldenrod;
+  justify-self: center;
+}
+
 .stat-title {
   font-size: 1.25rem;
 }

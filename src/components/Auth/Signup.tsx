@@ -1,7 +1,7 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { auth } from '../../firebase-config'
 import Navbar from "../Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const schema = z.object({
     email: z.string().email(),
     fullName: z.string(),
-    password: z.string().min(8), // Find out how to use Zod to validate that 2 fields are equal
+    password: z.string().min(8),
     repeatPassword: z.string().min(8)   
 }).refine((data) => data.password === data.repeatPassword, {
     message: "Passwords don't match",
@@ -19,7 +19,7 @@ const schema = z.object({
 type SignUpFields = z.infer<typeof schema>
 
 function Signup() {
-    
+    const navigate = useNavigate()
     const { register, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm<SignUpFields>({resolver: zodResolver(schema)})
     
     const createNewUser: SubmitHandler<SignUpFields> = async(data) => {
@@ -27,6 +27,8 @@ function Signup() {
         try {
             await createUserWithEmailAndPassword(auth, data.email, data.password)
             // Send confirmation email
+            sendEmailVerification(auth.currentUser!)
+            navigate('/displaced', {state: {fromSignup: true}})
         } catch (error) {
             setError("root", {
                 message: `${error}`
