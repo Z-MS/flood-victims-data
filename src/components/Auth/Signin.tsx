@@ -54,7 +54,7 @@ function Signin() {
                     </div>}
                 </div>
                 </form>
-                <p>Don't have an account? <Link to="/signin">Sign up</Link></p>
+                <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
             </div>
         </>
     )

@@ -2,15 +2,12 @@ import { getFirestore, collection, getDocs } from "firebase/firestore"
 import app, { auth } from '../../firebase-config'
 import { useEffect, useState } from "react"
 import Navbar from '../Navbar'
-import { useLocation } from "react-router-dom"
 
 function DisplacedPersons() {
-    const location = useLocation()
     const [displaced, setDisplaced] = useState([])
     const db = getFirestore(app)
     async function fetchDisplaced() {
-        const querySnapshot: any = 
-            await getDocs(collection(db, "displaced"))
+        const querySnapshot: any = await getDocs(collection(db, "displaced"))
         
         setDisplaced(querySnapshot.docs.map((doc: { data: () => any }) => doc.data()))
     }
@@ -23,9 +20,10 @@ function DisplacedPersons() {
         <>
         <Navbar />
                 {
-                    (location.state?.fromSignUp && !auth.currentUser?.emailVerified ) &&
+                    (!auth.currentUser?.emailVerified) &&
                     (<div className="notice">
                         <p>Please check your email inbox to verify your email address</p>
+                        <button>Resend link</button>
                     </div>)
                 }
             

@@ -28,7 +28,7 @@ function Signup() {
             await createUserWithEmailAndPassword(auth, data.email, data.password)
             // Send confirmation email
             sendEmailVerification(auth.currentUser!)
-            navigate('/displaced', {state: {fromSignup: true}})
+            navigate('/displaced')
         } catch (error) {
             setError("root", {
                 message: `${error}`
