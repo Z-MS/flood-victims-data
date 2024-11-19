@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase-config'
 import Navbar from "../Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,12 +14,14 @@ const schema = z.object({
 type SignInFields = z.infer<typeof schema>
 
 function Signin() {
+    const navigate = useNavigate()
     const { register, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm<SignInFields>({resolver: zodResolver(schema)})
-    
     const loginUser: SubmitHandler<SignInFields> = async(data) => {
+    
         
         try {
-            await signInWithEmailAndPassword(auth, data.email, data.password)            
+            await signInWithEmailAndPassword(auth, data.email, data.password)
+            navigate('/displaced')         
         } catch (error) {
             // check if error is due to network or invalid credentials
             setError("root", {
@@ -41,7 +43,7 @@ function Signin() {
                         )}
                     </div>        
                     <div>
-                        <input {...register("password")} type="password" name="password" placeholder="Create a password" />
+                        <input {...register("password")} type="password" name="password" placeholder="Your password" />
                         {errors.password && (
                             <div className="error">{errors.password.message}</div>
                         )}
@@ -54,6 +56,7 @@ function Signin() {
                     </div>}
                 </div>
                 </form>
+                <p><Link to="/reset">Forgot password?</Link></p>
                 <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
             </div>
         </>

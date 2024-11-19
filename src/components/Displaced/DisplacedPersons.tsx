@@ -1,26 +1,32 @@
-import { getFirestore, collection, getDocs } from "firebase/firestore"
-import app, { auth } from '../../firebase-config'
+import "./DisplacedPersons.css"
+import { collection, getDocs } from "firebase/firestore"
+import { auth, db } from '../../firebase-config'
 import { useEffect, useState } from "react"
 import Navbar from '../Navbar'
 
 function DisplacedPersons() {
     const [displaced, setDisplaced] = useState([])
-    const db = getFirestore(app)
+    const [userVerified, setUserVerified] = useState<boolean|undefined>(false)
+
     async function fetchDisplaced() {
-        const querySnapshot: any = await getDocs(collection(db, "displaced"))
-        
-        setDisplaced(querySnapshot.docs.map((doc: { data: () => any }) => doc.data()))
+        try {
+            const querySnapshot: any = await getDocs(collection(db, "displaced"))
+            setDisplaced(querySnapshot.docs.map((doc: any) => doc.data()))
+        } catch(error) {
+            console.error(error)
+        }
     }
-    // should track the emailVerified prop for changes so we can display an "Email Verified" banner when it changes
+
     useEffect(() => {
+        setUserVerified(auth.currentUser?.emailVerified)  
         fetchDisplaced()
-    })
+    }, [])
 
     return (
         <>
         <Navbar />
                 {
-                    (!auth.currentUser?.emailVerified) &&
+                    (auth.currentUser && !userVerified) &&
                     (<div className="notice">
                         <p>Please check your email inbox to verify your email address</p>
                         <button>Resend link</button>

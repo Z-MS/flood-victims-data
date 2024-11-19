@@ -23,7 +23,6 @@ function Signup() {
     const { register, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm<SignUpFields>({resolver: zodResolver(schema)})
     
     const createNewUser: SubmitHandler<SignUpFields> = async(data) => {
-        
         try {
             await createUserWithEmailAndPassword(auth, data.email, data.password)
             // Send confirmation email

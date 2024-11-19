@@ -7,6 +7,7 @@ import ErrorPage from './components/ErrorPage.tsx'
 import DisplacedPersons from './components/Displaced/DisplacedPersons.tsx'
 import Signup from './components/Auth/Signup.tsx'
 import Signin from './components/Auth/Signin.tsx'
+import ResetPassword from './components/Auth/ResetPassword.tsx'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
     path: "/signin",
     element: <Signin />
   },
+  {
+    path: "/reset",
+    element: <ResetPassword/>
+  }
 ]);
 
 createRoot(document.getElementById('root')!).render(
