@@ -1,6 +1,5 @@
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { auth } from '../../firebase-config'
-import Navbar from "../Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -37,7 +36,6 @@ function Signup() {
 
     return (
         <>
-            <Navbar />
             <div>
                <form onSubmit={handleSubmit(createNewUser)}>
                <div className="form__container">

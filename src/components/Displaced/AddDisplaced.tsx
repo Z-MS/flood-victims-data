@@ -1,1 +1,0 @@
-import { DisplacedPerson } from "./displacedType"

@@ -1,6 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase-config'
-import Navbar from "../Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -32,7 +31,6 @@ function Signin() {
 
     return (
         <>
-            <Navbar />
             <div>
                <form onSubmit={handleSubmit(loginUser)}>
                <div className="form__container">
@@ -56,7 +54,7 @@ function Signin() {
                     </div>}
                 </div>
                 </form>
-                <p><Link to="/reset">Forgot password?</Link></p>
+                <p><Link to="/forgotpassword">Forgot password?</Link></p>
                 <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
             </div>
         </>

@@ -1,13 +1,19 @@
+import { Outlet, useLocation } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
 import StatCard from './components/StatCard'
 
 function App() {
+  const location = useLocation()
 
   return (
     <>
         <Navbar/>
         <main>
+          <Outlet/>
+          {
+            location.pathname === '/' && (
+              <>
           <div id='title'>
             <h1>Maiduguri Flood Victims Data Capture</h1>
           </div>
@@ -23,6 +29,10 @@ function App() {
             </StatCard>
 
           </div>
+              </>
+
+            )
+          }
         </main>
     </>
   )

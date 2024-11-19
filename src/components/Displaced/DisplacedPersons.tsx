@@ -2,7 +2,6 @@ import "./DisplacedPersons.css"
 import { collection, getDocs } from "firebase/firestore"
 import { auth, db } from '../../firebase-config'
 import { useEffect, useState } from "react"
-import Navbar from '../Navbar'
 
 function DisplacedPersons() {
     const [displaced, setDisplaced] = useState([])
@@ -24,7 +23,6 @@ function DisplacedPersons() {
 
     return (
         <>
-        <Navbar />
                 {
                     (auth.currentUser && !userVerified) &&
                     (<div className="notice">
