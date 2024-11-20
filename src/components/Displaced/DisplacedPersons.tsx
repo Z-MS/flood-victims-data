@@ -1,11 +1,22 @@
 import "./DisplacedPersons.css"
 import { collection, getDocs } from "firebase/firestore"
 import { auth, db } from '../../firebase-config'
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import AddDisplaced from "./AddDisplaced"
 
 function DisplacedPersons() {
+    const dialog = useRef<HTMLDialogElement>(null)
     const [displaced, setDisplaced] = useState([])
     const [userVerified, setUserVerified] = useState<boolean|undefined>(false)
+
+    function openCreateForm() {
+        dialog.current?.showModal()
+    }
+
+    function closeCreateForm() {
+        fetchDisplaced()
+        dialog.current?.close()
+    }
 
     async function fetchDisplaced() {
         try {
@@ -17,14 +28,17 @@ function DisplacedPersons() {
     }
 
     useEffect(() => {
-        setUserVerified(auth.currentUser?.emailVerified)  
-        fetchDisplaced()
+        if(auth.currentUser) {
+            setUserVerified(auth.currentUser?.emailVerified)  
+            fetchDisplaced()
+        }
     }, [])
-
+ 
     return (
         <>
                 {
-                    (auth.currentUser && !userVerified) &&
+                // we should hide this when it's loading    
+                    auth.currentUser && !userVerified &&
                     (<div className="notice">
                         <p>Please check your email inbox to verify your email address</p>
                         <button>Resend link</button>
@@ -32,10 +46,19 @@ function DisplacedPersons() {
                 }
             
             <div>
+                <button onClick={openCreateForm}>Add displaced person</button>
+                {
+                    
+                    (
+                        <dialog ref={dialog} id="add-displaced-dialog">
+                            <AddDisplaced onDisplacedPersonAdded={closeCreateForm}/>
+                        </dialog>
+                    )
+                }
                 {
                     displaced.map((disp: any, index) => (
                         <div key={index}>
-                            <p>{disp.name}</p>
+                            <p>{disp.fullName}</p>
                         </div>
                     ))
                 }

@@ -10,6 +10,7 @@ import Signin from './components/Auth/Signin.tsx'
 import ResetPassword from './components/Auth/ResetPassword.tsx'
 import ForgotPassword from './components/Auth/ForgotPassword.tsx'
 import EmailAction from './components/Auth/EmailAction.tsx'
+import About from './components/About.tsx'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/about",
+        element: <About />
+      },
       {
         path: "/displaced",
         element: <DisplacedPersons />

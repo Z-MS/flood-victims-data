@@ -21,7 +21,7 @@ function Navbar() {
             <ul className='nav-list'>
               <li className='nav-item'><Link to="/">Home</Link></li>
               <li className='nav-item'><Link to="/displaced">Displaced Persons</Link></li>
-              <li className='nav-item'><Link to="/">About</Link></li>
+              <li className='nav-item'><Link to="/about">About</Link></li>
             </ul>
             <ul className="nav-list">
               {!auth.currentUser ? 
