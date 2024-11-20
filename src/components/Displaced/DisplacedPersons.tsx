@@ -7,6 +7,7 @@ import AddDisplaced from "./AddDisplaced"
 function DisplacedPersons() {
     const dialog = useRef<HTMLDialogElement>(null)
     const [displaced, setDisplaced] = useState([])
+    const [isUserSignedIn, setIsUserSignedIn] = useState<boolean>(false)
     const [userVerified, setUserVerified] = useState<boolean|undefined>(false)
 
     function openCreateForm() {
@@ -29,6 +30,7 @@ function DisplacedPersons() {
 
     useEffect(() => {
         if(auth.currentUser) {
+            setIsUserSignedIn(true)
             setUserVerified(auth.currentUser?.emailVerified)  
             fetchDisplaced()
         }
@@ -38,7 +40,7 @@ function DisplacedPersons() {
         <>
                 {
                 // we should hide this when it's loading    
-                    auth.currentUser && !userVerified &&
+                    isUserSignedIn && !userVerified &&
                     (<div className="notice">
                         <p>Please check your email inbox to verify your email address</p>
                         <button>Resend link</button>

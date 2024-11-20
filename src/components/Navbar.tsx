@@ -1,9 +1,11 @@
 import { Link, useNavigate } from "react-router-dom"
 import { auth } from "../firebase-config"
 import { signOut } from "firebase/auth"
+import { useEffect, useState } from "react"
 
 function Navbar() {
   const navigate = useNavigate()
+  const [isUserSignedIn, setIsUserSignedIn] = useState<boolean>(false)
 
   async function signOutUser () {
     try {
@@ -15,6 +17,12 @@ function Navbar() {
     }
   }
 
+  useEffect(() => {
+    if(auth.currentUser) {
+      setIsUserSignedIn(true)
+    }
+  }, [])
+
   return(
       <header>
           <nav>
@@ -24,7 +32,7 @@ function Navbar() {
               <li className='nav-item'><Link to="/about">About</Link></li>
             </ul>
             <ul className="nav-list">
-              {!auth.currentUser ? 
+              {isUserSignedIn ? 
               <>
                 <li className='nav-item'><Link to="/signin">Sign in</Link></li>
                 <li className='nav-item'><Link to="/signup">Sign up</Link></li>
