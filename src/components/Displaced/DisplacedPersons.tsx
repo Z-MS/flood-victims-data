@@ -14,8 +14,10 @@ function DisplacedPersons() {
         dialog.current?.showModal()
     }
 
-    function closeCreateForm() {
-        fetchDisplaced()
+    function closeCreateForm(message: string) {
+        if(message === 'create') {
+            fetchDisplaced()
+        }
         dialog.current?.close()
     }
 

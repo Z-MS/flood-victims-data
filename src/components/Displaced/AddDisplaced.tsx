@@ -3,6 +3,7 @@ import { auth, db } from '../../firebase-config'
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 
 const schema = z.object({
     fullName: z.string().min(3).max(100),
@@ -18,14 +19,14 @@ const schema = z.object({
 type DisplacedPersonFields = z.infer<typeof schema>
 
 export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
-    const { register, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm<DisplacedPersonFields>({resolver: zodResolver(schema)})
+    const { register, handleSubmit, reset, setError, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<DisplacedPersonFields>({resolver: zodResolver(schema)})
     
     const addDisplacedPerson: SubmitHandler<DisplacedPersonFields> = async(data) => {
         try {
             await addDoc(collection(db, "displaced"), {
                 ...data, addedBy: auth.currentUser?.uid
             })
-            onDisplacedPersonAdded()
+            onDisplacedPersonAdded("create")
         } catch(error) {
             console.log(error)
             setError("root", {
@@ -34,8 +35,17 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
         }
     }
 
+    useEffect(() => {
+        reset()
+    }, [isSubmitSuccessful])
+
+    function cancel() {
+        onDisplacedPersonAdded("cancel")
+    }
+
     return (
         <div>
+            <button className="error" onClick={cancel}>Cancel</button>
             <form onSubmit={handleSubmit(addDisplacedPerson)}>
                 <div className="form__container">
                     <div>

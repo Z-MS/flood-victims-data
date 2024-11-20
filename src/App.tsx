@@ -5,7 +5,7 @@ import StatCard from './components/StatCard'
 
 function App() {
   const location = useLocation()
-
+  // fetch displaced people docs, then render the number of stuff on this page
   return (
     <>
         <Navbar/>
