@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 const schema = z.object({
     fullName: z.string().min(3).max(100),
+    gender: z.string().min(4).max(6),
     age: z.number().min(0).max(150),
     phone: z.number().max(11111111111),
     employmentStatus: z.string().max(10),
@@ -40,6 +41,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
     }, [isSubmitSuccessful])
 
     function cancel() {
+        reset()
         onDisplacedPersonAdded("cancel")
     }
 
@@ -49,39 +51,71 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
             <form onSubmit={handleSubmit(addDisplacedPerson)}>
                 <div className="form__container">
                     <div>
+                        <label>Full name</label>
                         <input type="text" placeholder="Full name" {...register("fullName")} />
                         {errors.fullName && (
                             <div className="error">{errors.fullName.message}</div>
                         )}
+
+                        <label>Gender</label>
+                        <select {...register("gender")} defaultValue="placeholder">
+                            <option disabled value="placeholder">Select a gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        {errors.gender && (
+                            <div className="error">{errors.gender.message}</div>
+                        )}
+
+                        <label>Age</label>
                         <input type="number" placeholder="age" {...register("age", { valueAsNumber: true })} />
                         {errors.age && (
                             <div className="error">{errors.age.message}</div>
                         )}
-                        <input type="number" placeholder="phone" {...register("phone", { valueAsNumber: true })} />
+
+                        <label>Phone number</label>
+                        <input type="number" placeholder="Phone number" {...register("phone", { valueAsNumber: true })} />
                         {errors.phone && (
                             <div className="error">{errors.phone.message}</div>
                         )}
                     </div>
                     <div>
-                        <input type="text" placeholder="employmentStatus" {...register("employmentStatus")} />
+                        <label>Employment status</label>
+                        <select {...register("employmentStatus")} defaultValue="placeholder">
+                            <option disabled value="placeholder">Select employment status</option>
+                            <option value="Employed">Employed</option>
+                            <option value="Unemployed">Unemployed</option>
+                        </select>
                         {errors.employmentStatus && (
                             <div className="error">{errors.employmentStatus.message}</div>
                         )}
-                        <input type="text" placeholder="occupation" {...register("occupation")} />
+
+                        <label>Occupation</label>
+                        <input type="text" placeholder="Occupation" {...register("occupation")} />
                         {errors.occupation && (
                             <div className="error">{errors.occupation.message}</div>
                         )}
-                        <input type="text" placeholder="qualification" {...register("qualification")} /> 
+
+                        <label>Qualification</label>
+                        <input type="text" placeholder="Qualification" {...register("qualification")} /> 
                         {errors.qualification && (
                             <div className="error">{errors.qualification.message}</div>
                         )}
                     </div>
                     <div>
-                        <input type="text" placeholder="maritalStatus" {...register("maritalStatus")} />
+                        <label>Marital status</label>
+                        <select {...register("maritalStatus")} defaultValue="placeholder">
+                            <option disabled value="placeholder">Select marital status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>
                         {errors.maritalStatus && (
                             <div className="error">{errors.maritalStatus.message}</div>
                         )}
-                        <input type="number" placeholder="numberOfChildren" {...register("numberOfChildren", { valueAsNumber: true })} />
+
+                        <label>Number of children</label>
+                        <input type="number" placeholder="Number of children" {...register("numberOfChildren", { valueAsNumber: true })} />
                         {errors.numberOfChildren && (
                             <div className="error">{errors.numberOfChildren.message}</div>
                         )}

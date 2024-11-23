@@ -1,14 +1,17 @@
 import "./DisplacedPersons.css"
-import { collection, getDocs } from "firebase/firestore"
-import { auth, db } from '../../firebase-config'
+import { auth } from '../../firebase-config'
 import { useEffect, useRef, useState } from "react"
 import AddDisplaced from "./AddDisplaced"
+import useDisplacedPersonsStore from '../../stores/displacedPersons'
 
 function DisplacedPersons() {
-    const dialog = useRef<HTMLDialogElement>(null)
-    const [displaced, setDisplaced] = useState([])
+    const displacedPersons = useDisplacedPersonsStore((state: any) => state.displacedPersons)
+    const fetchDisplacedPersons = useDisplacedPersonsStore((state: any) => state.fetchDisplacedPersons)
+  
     const [isUserSignedIn, setIsUserSignedIn] = useState<boolean>(false)
     const [userVerified, setUserVerified] = useState<boolean|undefined>(false)
+    
+    const dialog = useRef<HTMLDialogElement>(null)
 
     function openCreateForm() {
         dialog.current?.showModal()
@@ -16,32 +19,22 @@ function DisplacedPersons() {
 
     function closeCreateForm(message: string) {
         if(message === 'create') {
-            fetchDisplaced()
+            fetchDisplacedPersons()
         }
         dialog.current?.close()
-    }
-
-    async function fetchDisplaced() {
-        try {
-            const querySnapshot: any = await getDocs(collection(db, "displaced"))
-            setDisplaced(querySnapshot.docs.map((doc: any) => doc.data()))
-        } catch(error) {
-            console.error(error)
-        }
     }
 
     useEffect(() => {
         if(auth.currentUser) {
             setIsUserSignedIn(true)
             setUserVerified(auth.currentUser?.emailVerified)  
-            fetchDisplaced()
         }
+        fetchDisplacedPersons()
     }, [])
  
     return (
         <>
-                {
-                // we should hide this when it's loading    
+                {   
                     isUserSignedIn && !userVerified &&
                     (<div className="notice">
                         <p>Please check your email inbox to verify your email address</p>
@@ -50,17 +43,13 @@ function DisplacedPersons() {
                 }
             
             <div>
-                <button onClick={openCreateForm}>Add displaced person</button>
-                {
+                {isUserSignedIn && (<button onClick={openCreateForm}>Add displaced person</button>) }
+                <dialog ref={dialog} id="add-displaced-dialog">
+                    <AddDisplaced onDisplacedPersonAdded={closeCreateForm}/>
+                </dialog>
                     
-                    (
-                        <dialog ref={dialog} id="add-displaced-dialog">
-                            <AddDisplaced onDisplacedPersonAdded={closeCreateForm}/>
-                        </dialog>
-                    )
-                }
                 {
-                    displaced.map((disp: any, index) => (
+                    displacedPersons.map((disp: any, index:any) => (
                         <div key={index}>
                             <p>{disp.fullName}</p>
                         </div>
