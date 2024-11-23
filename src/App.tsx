@@ -45,7 +45,7 @@ function App() {
   useEffect(() => {
     fetchDisplacedPersons()
     getStats()
-  })
+  }, [])
 
   useEffect(() => {
     if(location.pathname === "/") {
