@@ -43,6 +43,11 @@ function App() {
   }
 
   useEffect(() => {
+    fetchDisplacedPersons()
+    getStats()
+  })
+
+  useEffect(() => {
     if(location.pathname === "/") {
       setOnHomepage(true)
       fetchDisplacedPersons()

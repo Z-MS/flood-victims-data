@@ -34,8 +34,7 @@ function Navbar() {
               <li className='nav-item'><Link to="/about">About</Link></li>
             </ul>
             <ul className="nav-list">
-              {!isUserSignedIn ? 
-              
+              {!isUserSignedIn ?       
               <>
                 <li className='nav-item'><Link to="/signin">Sign in</Link></li>
                 <li className='nav-item'><Link to="/signup">Sign up</Link></li>
