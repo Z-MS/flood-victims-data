@@ -2,27 +2,78 @@ import { create } from "zustand";
 import { collection, getDocs } from "firebase/firestore"
 import { db } from '../firebase-config'
 
-// this should be in a set() function in the store
-/* async function fetchDisplaced() {
-    try {
-        const querySnapshot = await getDocs(collection(db, "displaced"))
-        const displacedDocs = querySnapshot.docs.map((doc) => doc.data())
-        return displacedDocs
-    } catch(error) {
-        console.error(error)
-    }
-} */
-
 const displacedPersonsStore = (set: any) => ({
+    displacedDataUpdated: false,
+    displacedDataLoaded: false,
+    displacedDataLoading: false,
+    firstLoad: true,
     displacedPersons: [],
+    totalDisplacedCount: 0,
+    numberOfChildren: 0,
+    totalFemalesCount: 0,
+    numberOfWidows: 0,
+    numberOfDivorcees: 0,
     fetchDisplacedPersons: async() => {
         try {
+            set(() => ({ displacedDataLoading: true, displacedDataLoaded: false }))
             const querySnapshot = await getDocs(collection(db, "displaced"))
             const displacedDocs = querySnapshot.docs.map((doc) => doc.data())
-            set(() => ({displacedPersons: displacedDocs}))  
+            
+            function getCounts() {
+                let totalCount = 0;
+                let childrenCount = 0;
+                let totalFemalesCount = 0;
+                let widowsCount = 0;
+                let divorceesCount = 0;
+
+                displacedDocs.forEach((person: any) => {
+                    totalCount++;
+                    if(person.age < 13) {
+                        childrenCount++
+                    }
+                    if(person.gender === 'Female') {
+                        totalFemalesCount++
+                    }
+                    if(person.maritalStatus === 'Widowed') {
+                        widowsCount++
+                    }
+                    if(person.maritalStatus === 'Divorced') {
+                        divorceesCount++
+                    }
+                })
+                return { totalCount, childrenCount, totalFemalesCount, widowsCount, divorceesCount }
+            }
+
+            const counts = getCounts()
+
+            set(() => ({
+                displacedDataLoading: false,
+                displacedDataLoaded: true,
+                displacedPersons: displacedDocs,
+                totalDisplacedCount: counts.totalCount,
+                numberOfChildren: counts.childrenCount,
+                totalFemalesCount: counts.totalFemalesCount,
+                numberOfWidows: counts.widowsCount,
+                numberOfDivorcees: counts.divorceesCount
+             }))
         } catch(error) {
             console.error(error)
-        }        
+        } finally {
+            set({
+                displacedDataLoading: false,
+                displacedDataLoaded: false
+            })
+        }
+    },
+    setUpdateStatus: (status: boolean) => {
+        set({
+            displacedDataUpdated: status
+        })
+    },
+    setFirstLoad: () => {
+        set({
+            firstLoad: false
+        })  
     }
 })
 

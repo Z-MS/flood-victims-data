@@ -6,7 +6,7 @@ import useDisplacedPersonsStore from '../../stores/displacedPersons'
 
 function DisplacedPersons() {
     const displacedPersons = useDisplacedPersonsStore((state: any) => state.displacedPersons)
-    const fetchDisplacedPersons = useDisplacedPersonsStore((state: any) => state.fetchDisplacedPersons)
+    const { fetchDisplacedPersons, setUpdateStatus } = useDisplacedPersonsStore()
   
     const [isUserSignedIn, setIsUserSignedIn] = useState<boolean>(false)
     const [userVerified, setUserVerified] = useState<boolean|undefined>(false)
@@ -19,6 +19,7 @@ function DisplacedPersons() {
 
     function closeCreateForm(message: string) {
         if(message === 'create') {
+            setUpdateStatus(true)
             fetchDisplacedPersons()
         }
         dialog.current?.close()
