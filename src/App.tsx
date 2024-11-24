@@ -8,17 +8,16 @@ import useDisplacedPersonsStore from './stores/displacedPersons'
 function App() {
   const location = useLocation()
   const [onHomepage, setOnHomepage] = useState<boolean>(location.pathname === '/')
-  const {fetchDisplacedPersons, firstLoad, setFirstLoad, displacedDataUpdated,displacedDataLoading, setUpdateStatus, totalDisplacedCount, numberOfChildren, totalFemalesCount, numberOfWidows, numberOfDivorcees} = useDisplacedPersonsStore() 
+  const {fetchDisplacedPersons, displacedDataUpdated,displacedDataLoading, setUpdateStatus, totalDisplacedCount, numberOfChildren, totalFemalesCount, numberOfWidows, numberOfDivorcees} = useDisplacedPersonsStore() 
 
   useEffect(() => {
     fetchDisplacedPersons()
-    setFirstLoad()
   }, [])
 
   useEffect(() => {
     if(location.pathname === "/") {
       setOnHomepage(true)
-      if(displacedDataUpdated && !firstLoad) {
+      if(displacedDataUpdated) {
         setUpdateStatus(false)
         fetchDisplacedPersons()
       }

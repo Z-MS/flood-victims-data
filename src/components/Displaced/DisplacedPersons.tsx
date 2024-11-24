@@ -20,7 +20,7 @@ function DisplacedPersons() {
         filter: true
     }), [])
 
-    const [colDefs, setColDefs] = useState([
+    const [colDefs] = useState([
         {
             field: "fullName",
             headerName: "Name"
@@ -35,7 +35,6 @@ function DisplacedPersons() {
         { field: "numberOfChildren" }
     ])
 
-
     function openCreateForm() {
         dialog.current?.showModal()
     }
@@ -49,22 +48,22 @@ function DisplacedPersons() {
     }
 
     useEffect(() => {
+        fetchDisplacedPersons()
         if(auth.currentUser) {
             setIsUserSignedIn(true)
             setUserVerified(auth.currentUser?.emailVerified)  
         }
-        fetchDisplacedPersons()
     }, [])
  
     return (
         <>
-                {   
-                    isUserSignedIn && !userVerified &&
-                    (<div className="notice">
-                        <p>Please check your email inbox to verify your email address</p>
-                        <button>Resend link</button>
-                    </div>)
-                }
+            {   
+                isUserSignedIn && !userVerified &&
+                (<div className="notice">
+                    <p>Please check your email inbox to verify your email address</p>
+                    <button>Resend link</button>
+                </div>)
+            }
             
             <div>
                 {isUserSignedIn && (<button onClick={openCreateForm}>Add displaced person</button>) }

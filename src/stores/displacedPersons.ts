@@ -6,7 +6,6 @@ const displacedPersonsStore = (set: any) => ({
     displacedDataUpdated: false,
     displacedDataLoaded: false,
     displacedDataLoading: false,
-    firstLoad: true,
     displacedPersons: [],
     totalDisplacedCount: 0,
     numberOfChildren: 0,
@@ -69,11 +68,6 @@ const displacedPersonsStore = (set: any) => ({
         set({
             displacedDataUpdated: status
         })
-    },
-    setFirstLoad: () => {
-        set({
-            firstLoad: false
-        })  
     }
 })
 
