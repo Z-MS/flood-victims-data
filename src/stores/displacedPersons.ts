@@ -3,8 +3,6 @@ import { collection, getDocs } from "firebase/firestore"
 import { db } from '../firebase-config'
 
 const displacedPersonsStore = (set: any) => ({
-    displacedDataUpdated: false,
-    displacedDataLoaded: false,
     displacedDataLoading: false,
     displacedPersons: [],
     totalDisplacedCount: 0,
@@ -47,7 +45,6 @@ const displacedPersonsStore = (set: any) => ({
 
             set(() => ({
                 displacedDataLoading: false,
-                displacedDataLoaded: true,
                 displacedPersons: displacedDocs,
                 totalDisplacedCount: counts.totalCount,
                 numberOfChildren: counts.childrenCount,
@@ -59,15 +56,9 @@ const displacedPersonsStore = (set: any) => ({
             console.error(error)
         } finally {
             set({
-                displacedDataLoading: false,
-                displacedDataLoaded: false
+                displacedDataLoading: false
             })
         }
-    },
-    setUpdateStatus: (status: boolean) => {
-        set({
-            displacedDataUpdated: status
-        })
     }
 })
 
