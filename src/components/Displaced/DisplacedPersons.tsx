@@ -48,7 +48,6 @@ function DisplacedPersons() {
     }
 
     useEffect(() => {
-        fetchDisplacedPersons()
         if(auth.currentUser) {
             setIsUserSignedIn(true)
             setUserVerified(auth.currentUser?.emailVerified)  

@@ -19,7 +19,6 @@ function App() {
       setOnHomepage(true)
       if(displacedDataUpdated) {
         setUpdateStatus(false)
-        fetchDisplacedPersons()
       }
     } else {
       setOnHomepage(false)
