@@ -1,4 +1,4 @@
-import "./DisplacedPersons.css"
+import "../../styles/DisplacedPersons.css"
 import { auth } from '../../firebase-config'
 import { useEffect, useRef, useState, useMemo } from "react"
 import AddDisplaced from "./AddDisplaced"

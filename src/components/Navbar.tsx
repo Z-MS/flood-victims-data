@@ -1,3 +1,4 @@
+import '../styles/Navbar.css'
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { auth } from "../firebase-config"
 import { signOut } from "firebase/auth"
@@ -27,20 +28,23 @@ function Navbar() {
 
   return(
       <header>
+          <button className="nav-toggle" aria-label="open navigation">
+            <span className="hamburger"></span>
+          </button>
           <nav>
             <ul className='nav-list'>
-              <li className='nav-item'><Link to="/">Home</Link></li>
-              <li className='nav-item'><Link to="/displaced">Displaced Persons</Link></li>
-              <li className='nav-item'><Link to="/about">About</Link></li>
+              <li className='nav-item'><Link className='nav-link' to="/">Home</Link></li>
+              <li className='nav-item'><Link className='nav-link' to="/displaced">Displaced Persons</Link></li>
+              <li id='about' className='nav-item'><Link className='nav-link' to="/about">About</Link></li>
             </ul>
-            <ul className="nav-list">
+            <ul className="nav-list nav-list__secondary">
               {!isUserSignedIn ?       
               <>
-                <li className='nav-item'><Link to="/signin">Sign in</Link></li>
-                <li className='nav-item'><Link to="/signup">Sign up</Link></li>
+                <li id='signin' className='nav-item'><Link className='nav-link' to="/signin">Sign in</Link></li>
+                <li id="signup" className='nav-item'><Link className='nav-link' to="/signup">Sign up</Link></li>
               </>:
               <>
-                <li className='nav-item'><button onClick={signOutUser}>Sign out</button></li>
+                <li className='nav-item'><button id='signout-button' onClick={signOutUser}>Sign out</button></li>
               </>
               }
             </ul>
