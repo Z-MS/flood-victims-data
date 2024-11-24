@@ -1,17 +1,40 @@
 import "./DisplacedPersons.css"
 import { auth } from '../../firebase-config'
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useMemo } from "react"
 import AddDisplaced from "./AddDisplaced"
 import useDisplacedPersonsStore from '../../stores/displacedPersons'
+import { AgGridReact } from 'ag-grid-react';
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-quartz.css";
 
 function DisplacedPersons() {
     const displacedPersons = useDisplacedPersonsStore((state: any) => state.displacedPersons)
-    const { fetchDisplacedPersons, setUpdateStatus } = useDisplacedPersonsStore()
+    const { fetchDisplacedPersons, setUpdateStatus, displacedDataLoading } = useDisplacedPersonsStore()
   
     const [isUserSignedIn, setIsUserSignedIn] = useState<boolean>(false)
     const [userVerified, setUserVerified] = useState<boolean|undefined>(false)
     
     const dialog = useRef<HTMLDialogElement>(null)
+
+    const defaultColDef = useMemo(() => ({
+        filter: true
+    }), [])
+
+    const [colDefs, setColDefs] = useState([
+        {
+            field: "fullName",
+            headerName: "Name"
+        },
+        { field: "age" },
+        { field: "gender" },
+        { field: "phone" },
+        { field: "employmentStatus" },
+        { field: "occupation" },
+        { field: "qualification" },
+        { field: "maritalStatus" },
+        { field: "numberOfChildren" }
+    ])
+
 
     function openCreateForm() {
         dialog.current?.showModal()
@@ -48,14 +71,17 @@ function DisplacedPersons() {
                 <dialog ref={dialog} id="add-displaced-dialog">
                     <AddDisplaced onDisplacedPersonAdded={closeCreateForm}/>
                 </dialog>
-                    
-                {
-                    displacedPersons.map((disp: any, index:any) => (
-                        <div key={index}>
-                            <p>{disp.fullName}</p>
-                        </div>
-                    ))
-                }
+                <div className="ag-theme-quartz"style={{height: 500}}>
+                    <AgGridReact
+                        loading={displacedDataLoading}
+                        rowData={displacedPersons}
+                        columnDefs={colDefs}
+                        defaultColDef={defaultColDef}
+                        pagination={true}
+                        paginationPageSize={10}
+                        paginationPageSizeSelector={[10, 20, 50]}
+                    />
+                </div>
             </div>
         </>
     )
