@@ -2,12 +2,25 @@ import '../styles/Navbar.css'
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { auth } from "../firebase-config"
 import { signOut } from "firebase/auth"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
   const [isUserSignedIn, setIsUserSignedIn] = useState<boolean>(false)
+  const navbar = useRef<HTMLUListElement | null>(null)
+  const navToggle = useRef<HTMLButtonElement | null>(null)
+
+  function toggleNavbar() {
+    const visibility = navbar.current?.getAttribute('data-visible')
+    if(visibility === 'false') {
+      navbar.current?.setAttribute('data-visible', 'true')
+      navToggle.current?.setAttribute('aria-expanded', 'true')
+    } else {
+      navbar.current?.setAttribute('data-visible', 'false')
+      navToggle.current?.setAttribute('aria-expanded', 'false')
+    }
+  }
 
   async function signOutUser () {
     try {
@@ -28,14 +41,14 @@ function Navbar() {
 
   return(
       <header>
-          <button className="nav-toggle" aria-label="open navigation">
+          <button ref={navToggle} onClick={toggleNavbar} className="nav-toggle" aria-label="open navigation" aria-controls="nav-list" aria-expanded="false">
             <span className="hamburger"></span>
           </button>
           <div>
             <p className="logo">FVD</p>
           </div>
           <nav>
-            <ul className='nav-list'>
+            <ul ref={navbar} data-visible="false" className='nav-list'>
               <li className='nav-item'><Link className='nav-link' to="/">Home</Link></li>
               <li className='nav-item'><Link className='nav-link' to="/displaced">Displaced Persons</Link></li>
               <li id='about' className='nav-item'><Link className='nav-link' to="/about">About</Link></li>

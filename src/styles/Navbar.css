@@ -78,16 +78,20 @@ nav {
         flex-direction: column;
         padding: 10rem 0 0 2em;
         background-color: #598cec;
+        transform: translateX(100%);
+    }
+
+    .nav-list[data-visible="true"] {
+        transform: translateX(0%);
     }
 
     .nav-item {
         text-align: left;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .nav-toggle {
         display: block;
-        /* margin: 1.5rem; */
         cursor: pointer;
         border: 0;
         width: 3em;
