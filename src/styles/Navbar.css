@@ -79,6 +79,7 @@ nav {
         padding: 10rem 0 0 2em;
         background-color: #598cec;
         transform: translateX(100%);
+        transition: transform 350ms ease-out;
     }
 
     .nav-list[data-visible="true"] {
