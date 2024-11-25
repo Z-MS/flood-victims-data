@@ -12,7 +12,7 @@ header {
     margin-left: 1rem;
 }
 
-.nav-toggle {
+.nav-toggle, .close {
     display: none;
 }
 
@@ -99,7 +99,7 @@ nav {
         height: 3em;
         padding-top: 0em;
         border-radius: 50%;
-        background: #072A2D;
+        background-color: #15417f;
         color: white;
         transition: opacity 250ms ease;    
         position: absolute;
@@ -108,6 +108,15 @@ nav {
         z-index: 9999;
     }
     
+    .nav-toggle[aria-expanded="true"] > .hamburger {
+        display: none;
+    }
+
+    .nav-toggle[aria-expanded="true"] > .close {
+        display: inline-block;
+        padding-top: 3px;
+    }
+
     .nav-toggle:focus,
     .nav-toggle:hover {
         opacity: .75;

@@ -1,4 +1,5 @@
 import '../styles/Navbar.css'
+import cancelIcon from '../assets/cancel-close-svgrepo-com.svg'
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { auth } from "../firebase-config"
 import { signOut } from "firebase/auth"
@@ -43,6 +44,7 @@ function Navbar() {
       <header>
           <button ref={navToggle} onClick={toggleNavbar} className="nav-toggle" aria-label="open navigation" aria-controls="nav-list" aria-expanded="false">
             <span className="hamburger"></span>
+            <span className="close"><img src={cancelIcon} width={20} height={20}/></span>
           </button>
           <div>
             <p className="logo">FVD</p>
