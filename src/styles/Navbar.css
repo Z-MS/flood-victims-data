@@ -87,7 +87,7 @@ nav {
 
     .nav-toggle {
         display: block;
-        margin: 1.5rem;
+        /* margin: 1.5rem; */
         cursor: pointer;
         border: 0;
         width: 3em;
@@ -98,7 +98,9 @@ nav {
         color: white;
         transition: opacity 250ms ease;    
         position: absolute;
-        left: 0;
+        top: 1.25rem;
+        right: 2rem;
+        z-index: 9999;
     }
     
     .nav-toggle:focus,

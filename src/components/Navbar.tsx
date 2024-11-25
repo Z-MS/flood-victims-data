@@ -28,12 +28,12 @@ function Navbar() {
 
   return(
       <header>
-          <div>
-            <p className="logo">FVD</p>
-          </div>
           <button className="nav-toggle" aria-label="open navigation">
             <span className="hamburger"></span>
           </button>
+          <div>
+            <p className="logo">FVD</p>
+          </div>
           <nav>
             <ul className='nav-list'>
               <li className='nav-item'><Link className='nav-link' to="/">Home</Link></li>
