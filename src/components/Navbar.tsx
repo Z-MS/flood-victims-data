@@ -36,8 +36,6 @@ function Navbar() {
               <li className='nav-item'><Link className='nav-link' to="/">Home</Link></li>
               <li className='nav-item'><Link className='nav-link' to="/displaced">Displaced Persons</Link></li>
               <li id='about' className='nav-item'><Link className='nav-link' to="/about">About</Link></li>
-            </ul>
-            <ul className="nav-list nav-list__secondary">
               {!isUserSignedIn ?       
               <>
                 <li id='signin' className='nav-item'><Link className='nav-link' to="/signin">Sign in</Link></li>

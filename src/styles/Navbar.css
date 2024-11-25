@@ -1,5 +1,7 @@
 header {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #3c74da;
     color: white;
     text-align: center;
@@ -20,13 +22,14 @@ nav {
 
 .nav-list {
   display: flex;
-  justify-content: center;
-  list-style-type: none;
+  gap: 1rem;
+  list-style: none;
 }
 
 .nav-item {
   margin-right: 1rem;
   font-size: 1.25rem;
+  font-weight: 700;
   color: white;
 }
 
@@ -57,8 +60,19 @@ nav {
         display: none;
     }
 
+    nav {
+        padding-top: 2em;
+        padding-bottom: 2rem;
+    }
+
     .nav-list {
-        margin-left: 1rem;
+        margin: 0;
+        position: fixed;
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        text-align: left;
+        padding: 2rem;
+        background-color: #598cec;
     }
 
     .nav-list__secondary {
@@ -67,9 +81,7 @@ nav {
 
     .nav-toggle {
         display: block;
-        margin-top: 0.75rem;
-        margin-left: 0.55rem;
-        margin-right: 0.55rem;
+        margin: 1.5rem;
         cursor: pointer;
         border: 0;
         width: 3em;
