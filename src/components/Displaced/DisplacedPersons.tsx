@@ -55,7 +55,7 @@ function DisplacedPersons() {
     }, [])
  
     return (
-        <>
+        <div id="displaced-page-container">
             {   
                 isUserSignedIn && !userVerified &&
                 (<div className="notice">
@@ -81,7 +81,7 @@ function DisplacedPersons() {
                     />
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

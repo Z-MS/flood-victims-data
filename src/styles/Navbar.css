@@ -6,6 +6,11 @@ header {
     color: white;
     text-align: center;
 }
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-left: 1rem;
+}
 
 .nav-toggle {
     display: none;
@@ -70,13 +75,13 @@ nav {
         position: fixed;
         inset: 0 0 0 30%;
         flex-direction: column;
-        text-align: left;
-        padding: 2rem;
+        padding: 10rem 0 0 2.5em;
         background-color: #598cec;
     }
 
-    .nav-list__secondary {
-        padding: 0;
+    .nav-item {
+        text-align: left;
+        font-size: 1.5rem;
     }
 
     .nav-toggle {

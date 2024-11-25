@@ -28,6 +28,9 @@ function Navbar() {
 
   return(
       <header>
+          <div>
+            <p className="logo">FVD</p>
+          </div>
           <button className="nav-toggle" aria-label="open navigation">
             <span className="hamburger"></span>
           </button>
