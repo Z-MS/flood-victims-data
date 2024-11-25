@@ -74,8 +74,9 @@ nav {
         margin: 0;
         position: fixed;
         inset: 0 0 0 30%;
+        z-index: 1000;
         flex-direction: column;
-        padding: 10rem 0 0 2.5em;
+        padding: 10rem 0 0 2em;
         background-color: #598cec;
     }
 
