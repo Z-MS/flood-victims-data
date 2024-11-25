@@ -57,7 +57,7 @@ function Navbar() {
               {!isUserSignedIn ?       
               <>
                 <li id='signin' className='nav-item'><Link className='nav-link' to="/signin">Sign in</Link></li>
-                <li id="signup" className='nav-item'><Link className='nav-link' to="/signup">Sign up</Link></li>
+                <li id='signup' className='nav-item'><Link className='nav-link' to="/signup">Sign up</Link></li>
               </>:
               <>
                 <li className='nav-item'><button id='signout-button' onClick={signOutUser}>Sign out</button></li>

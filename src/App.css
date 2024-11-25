@@ -5,6 +5,12 @@ main {
   padding-top: 1rem;
 }
 
+@media (max-width: 600px) {
+  main {
+    width: 80%;
+  }
+}
+
 a:visited {
   color: white;
 }
@@ -18,7 +24,7 @@ a:visited {
 
 #data-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 1rem;
   place-content: center;
 }

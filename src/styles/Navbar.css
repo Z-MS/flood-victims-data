@@ -61,9 +61,9 @@ nav {
 }
 
 @media (max-width: 600px) {
-    #signup, #about {
+    /* #signup, #about {
         display: none;
-    }
+    } */
 
     nav {
         padding-top: 2em;
