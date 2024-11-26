@@ -47,38 +47,45 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
 
     return (
         <div>
-            <button className="error" onClick={cancel}>Cancel</button>
+            <button className="button error" onClick={cancel}>Cancel</button>
             <form onSubmit={handleSubmit(addDisplacedPerson)}>
                 <div className="form__container">
-                    <div>
-                        <label>Full name</label>
-                        <input type="text" placeholder="Full name" {...register("fullName")} />
-                        {errors.fullName && (
-                            <div className="error">{errors.fullName.message}</div>
-                        )}
-
-                        <label>Gender</label>
-                        <select {...register("gender")} defaultValue="placeholder">
-                            <option disabled value="placeholder">Select a gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                        {errors.gender && (
-                            <div className="error">{errors.gender.message}</div>
-                        )}
-
-                        <label>Age</label>
-                        <input type="number" placeholder="age" {...register("age", { valueAsNumber: true })} />
-                        {errors.age && (
-                            <div className="error">{errors.age.message}</div>
-                        )}
-
-                        <label>Phone number</label>
-                        <input type="number" placeholder="Phone number" {...register("phone", { valueAsNumber: true })} />
-                        {errors.phone && (
-                            <div className="error">{errors.phone.message}</div>
-                        )}
-                    </div>
+                        <div>
+                            <label>Full name</label>
+                            <input type="text" placeholder="Full name" {...register("fullName")} />
+                            {errors.fullName && (
+                                <div className="error">{errors.fullName.message}</div>
+                            )}
+                            </div>
+                        <div>
+                            <label>Gender</label>
+                            <select {...register("gender")} defaultValue="placeholder">
+                                <option disabled value="placeholder">Select a gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            {errors.gender && (
+                                <div className="error">{errors.gender.message}</div>
+                            )}
+                        </div>
+                        
+                        <div>
+                            <label>Age</label>
+                            <input type="number" placeholder="age" {...register("age", { valueAsNumber: true })} />
+                            {errors.age && (
+                                <div className="error">{errors.age.message}</div>
+                            )}
+                        </div>
+                        
+                        <div>
+                            <label>Phone number</label>
+                            <input type="number" placeholder="Phone number" {...register("phone", { valueAsNumber: true })} />
+                            {errors.phone && (
+                                <div className="error">{errors.phone.message}</div>
+                            )}
+                        </div>
+                        
+                    
                     <div>
                         <label>Employment status</label>
                         <select {...register("employmentStatus")} defaultValue="placeholder">
@@ -89,19 +96,24 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                         {errors.employmentStatus && (
                             <div className="error">{errors.employmentStatus.message}</div>
                         )}
+                    </div>
 
+                    <div>
                         <label>Occupation</label>
                         <input type="text" placeholder="Occupation" {...register("occupation")} />
                         {errors.occupation && (
                             <div className="error">{errors.occupation.message}</div>
                         )}
+                    </div>
 
+                    <div>
                         <label>Qualification</label>
                         <input type="text" placeholder="Qualification" {...register("qualification")} /> 
                         {errors.qualification && (
                             <div className="error">{errors.qualification.message}</div>
                         )}
                     </div>
+
                     <div>
                         <label>Marital status</label>
                         <select {...register("maritalStatus")} defaultValue="placeholder">
@@ -114,6 +126,9 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                             <div className="error">{errors.maritalStatus.message}</div>
                         )}
 
+                    </div>
+
+                    <div>
                         <label>Number of children</label>
                         <input type="number" placeholder="Number of children" {...register("numberOfChildren", { valueAsNumber: true })} />
                         {errors.numberOfChildren && (
@@ -123,7 +138,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                     {errors.root && <div className="error">
                         { errors.root?.message }
                     </div>}
-                    <input disabled={isSubmitting} className="submit__button" type="submit" value="Add Displaced Person"/>
+                    <input disabled={isSubmitting} className="submit__button" type="submit" value="Submit"/>
                 </div>
             </form>
         </div>

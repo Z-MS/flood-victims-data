@@ -6,3 +6,7 @@
     text-align: left;
 }
 
+.notice {
+    background-color: goldenrod;
+    justify-self: center;
+}

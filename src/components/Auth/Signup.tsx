@@ -5,10 +5,12 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
 const schema = z.object({
     email: z.string().email(),
     fullName: z.string(),
-    password: z.string().min(8),
+    password: z.string().min(8).regex(passwordRegex, { message: "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character" }),
     repeatPassword: z.string().min(8)   
 }).refine((data) => data.password === data.repeatPassword, {
     message: "Passwords don't match",

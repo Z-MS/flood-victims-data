@@ -60,12 +60,12 @@ function DisplacedPersons() {
                 isUserSignedIn && !userVerified &&
                 (<div className="notice">
                     <p>Please check your email inbox to verify your email address</p>
-                    <button>Resend link</button>
+                    <button className="button">Resend link</button>
                 </div>)
             }
             
             <div>
-                {isUserSignedIn && (<button onClick={openCreateForm}>Add displaced person</button>) }
+                {isUserSignedIn && (<button className="button add__button" onClick={openCreateForm}>Add displaced person</button>) }
                 <dialog ref={dialog} id="add-displaced-dialog">
                     <AddDisplaced onDisplacedPersonAdded={closeCreateForm}/>
                 </dialog>

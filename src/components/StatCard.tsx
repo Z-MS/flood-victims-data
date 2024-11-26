@@ -1,3 +1,4 @@
+import "../styles/Statcard.css"
 import { ReactNode } from "react"
 
 type StatCardProps = {

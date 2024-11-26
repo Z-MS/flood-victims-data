@@ -12,7 +12,7 @@ main {
 }
 
 a:visited {
-  color: white;
+  color: unset;
 }
 
 #title {
@@ -29,9 +29,16 @@ a:visited {
   place-content: center;
 }
 
-form {
+.form__container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+input[type="text, number"] {
+  display: block;
+  text-align: left;
 }
 
 .error {
@@ -41,23 +48,21 @@ form {
   background-color: rgb(235, 81, 81);
 }
 
-.notice {
-  background-color: goldenrod;
-  justify-self: center;
-}
-
-.stat-title {
-  font-size: 1.25rem;
-}
-
-.stat-card {
-  margin-bottom: 1rem;
-  padding: 1rem;
+.button, input[type="submit"] {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-width: 0;
   border-radius: 1rem;
-  background-color: white;
-  box-shadow: 0 0 0.15rem rgba(0, 0, 0, 0.25);
+  padding: 0.25em 0.5em;
+  font-size: 1.10rem;
+  color: white;
+  cursor: pointer;
 }
 
-.number {
-  font-size: 1.75rem;
-}  
+.submit__button {
+  background-color: rgb(29 215 47);
+}
+
+.add__button {
+  background-color: cornflowerblue;
+}
