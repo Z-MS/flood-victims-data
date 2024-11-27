@@ -1,3 +1,5 @@
 @use "bulma/sass/themes";
 
-@use "bulma/sass/form"
+@use "bulma/sass/form" with (
+    $label-color: '#2e333d'
+)
