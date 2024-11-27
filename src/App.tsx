@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import './App.css'
+import './styles/bulma_override.scss'
 import Navbar from './components/Navbar'
 import StatCard from './components/StatCard'
 import { useEffect, useState } from 'react'

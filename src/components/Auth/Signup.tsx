@@ -40,31 +40,46 @@ function Signup() {
         <>
             <div>
                <form onSubmit={handleSubmit(createNewUser)}>
-               <div className="form__container">
-                    <div>
-                        <input {...register("email")} type="email" name="email" placeholder="Your email" />
-                        {errors.email && (
-                            <div className="error">{errors.email.message}</div>
-                        )}
-                    </div>
-                    <div>
-                        <input {...register("fullName")} type="text" name="fullName" placeholder="Your full name" />
+                    <div className="form__container">
+                        <div className="field">
+                            <label className="label">Email</label>
+                            <div className="control">
+                                <input className="input" {...register("email")} type="email" name="email" placeholder="Your email" />
+                            </div>
+                            {errors.email && (
+                                <div className="error">{errors.email.message}</div>
+                            )}
+                        </div>
+                    
+                        <div className="field">
+                            <label className="label">Full name</label>
+                        
+                            <div className="control">
+                                <input className="input" {...register("fullName")} type="text" name="fullName" placeholder="Your full name" />
+                            </div>
                         {errors.fullName && (
                             <div className="error">{errors.fullName.message}</div>
                         )}
-                    </div>
-                    <div>
-                        <input {...register("password")} type="password" name="password" placeholder="Create a password" />
-                        {errors.password && (
-                            <div className="error">{errors.password.message}</div>
-                        )}
-                    </div>
-                    <div>
-                        <input  {...register("repeatPassword")} type="password" name="repeatPassword" placeholder="Repeat your password" />
-                        {errors.repeatPassword && (
-                            <div className="error">{errors.repeatPassword.message}</div>
-                        )}
-                    </div>
+                        </div>
+                   
+                        <div className="field">
+                            <label className="label">Password</label>
+                            <div className="control">
+                                <input className="input" {...register("password")} type="password" name="password" placeholder="Create a password" />
+                            </div>
+                            {errors.password && (
+                                <div className="error">{errors.password.message}</div>
+                            )}
+                        </div>
+                        <div className="field">
+                            <label className="label">Repeat password</label>
+                            <div className="control">
+                                <input className="input"  {...register("repeatPassword")} type="password" name="repeatPassword" placeholder="Repeat your password" />
+                            </div>
+                            {errors.repeatPassword && (
+                                <div className="error">{errors.repeatPassword.message}</div>
+                            )}
+                        </div>
                     <div>
                         <input disabled={isSubmitting} className="submit__button" type="submit" value="Submit"/>
                     </div>
