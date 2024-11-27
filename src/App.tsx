@@ -28,7 +28,7 @@ function App() {
   return (
     <>
         <Navbar/>
-        <main>
+        <main data-theme="light">
           <Outlet/>
           {
             onHomepage && (
