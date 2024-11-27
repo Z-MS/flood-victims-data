@@ -5,14 +5,9 @@ main {
   padding-top: 1rem;
 }
 
-@media (max-width: 600px) {
-  main {
-    width: 80%;
-  }
-}
-
-a:visited {
-  color: unset;
+a, a:visited {
+  text-decoration: none;
+  color:rgb(29, 88, 215)
 }
 
 #title {
@@ -50,18 +45,12 @@ input[type="text, number"] {
   text-align: left;
 }
 
-.error {
-  margin: 0.5rem 0 0.5rem 0;
-  justify-self: center;
-  text-align: center;
-  background-color: rgb(235, 81, 81);
-}
-
 .button, input[type="submit"] {
   border-width: 0;
   border-radius: 1rem;
   padding: 0.5em 0.75em;
   font-size: 1.15rem;
+  font-weight: 700;
   color: white;
   cursor: pointer;
 }
@@ -73,3 +62,12 @@ input[type="text, number"] {
 .add__button {
   background-color: cornflowerblue;
 }
+  @media (max-width: 600px) {
+    main {
+      width: 80%;
+    }
+
+    form {
+      width: 100%;
+    }
+  }

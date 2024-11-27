@@ -6,10 +6,12 @@ header {
     color: white;
     text-align: center;
 }
-.logo {
+
+#logo {
     font-size: 1.5rem;
     font-weight: 900;
     margin-left: 1rem;
+    color: white;
 }
 
 .nav-toggle, .close {
@@ -42,6 +44,10 @@ nav {
     text-decoration: none;
 }
 
+.nav-link:visited {
+    color: white;
+}
+
 .nav-link:hover,
 .nav-link:focus {
     opacity: 0.65;
@@ -61,10 +67,6 @@ nav {
 }
 
 @media (max-width: 600px) {
-    /* #signup, #about {
-        display: none;
-    } */
-
     nav {
         padding-top: 2em;
         padding-bottom: 2rem;
@@ -103,7 +105,7 @@ nav {
         color: white;
         transition: opacity 250ms ease;    
         position: absolute;
-        top: 1.25rem;
+        top: 0.75rem;
         right: 2rem;
         z-index: 9999;
     }

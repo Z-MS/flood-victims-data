@@ -34,22 +34,28 @@ function Signin() {
             <div>
                <form onSubmit={handleSubmit(loginUser)}>
                <div className="form__container">
-                    <div>
-                        <input {...register("email")} type="email" name="email" placeholder="Your email" />
+                    <div className="field">
+                        <label className="label">Email</label>
+                        <div className="control">
+                            <input className={`input ` + (errors.email ? 'is-danger' : '')} {...register("email")} type="email" name="email" placeholder="Your email" />
+                        </div>
                         {errors.email && (
-                            <div className="error">{errors.email.message}</div>
+                            <div className="help is-danger">{errors.email.message}</div>
                         )}
                     </div>        
-                    <div>
-                        <input {...register("password")} type="password" name="password" placeholder="Your password" />
+                    <div className="field">
+                        <label className="label">Password</label>
+                        <div className="control">
+                            <input className={`input ` + (errors.password ? 'is-danger' : '')} {...register("password")} type="password" name="password" placeholder="Your password" />
+                        </div>
                         {errors.password && (
-                            <div className="error">{errors.password.message}</div>
+                            <div className="help is-danger">{errors.password.message}</div>
                         )}
                     </div>
                     <div>
                         <input disabled={isSubmitting} className="submit__button" type="submit" value="Submit"/>
                     </div>
-                    {errors.root && <div className="error">
+                    {errors.root && <div className="help is-danger">
                         { errors.root?.message }
                     </div>}
                 </div>
