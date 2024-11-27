@@ -29,11 +29,20 @@ a:visited {
   place-content: center;
 }
 
+form {
+  margin: 0 auto;
+  width: 80%;
+}
+
 .form__container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 1rem;
+}
+
+label {
+  text-align: left;
 }
 
 input[type="text, number"] {
@@ -49,12 +58,10 @@ input[type="text, number"] {
 }
 
 .button, input[type="submit"] {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
   border-width: 0;
   border-radius: 1rem;
-  padding: 0.25em 0.5em;
-  font-size: 1.10rem;
+  padding: 0.5em 0.75em;
+  font-size: 1.15rem;
   color: white;
   cursor: pointer;
 }

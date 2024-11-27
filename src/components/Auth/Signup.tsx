@@ -9,8 +9,8 @@ const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).
 
 const schema = z.object({
     email: z.string().email(),
-    fullName: z.string(),
-    password: z.string().min(8).regex(passwordRegex, { message: "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character" }),
+    fullName: z.string().min(3),
+    password: z.string().min(8).regex(passwordRegex),
     repeatPassword: z.string().min(8)   
 }).refine((data) => data.password === data.repeatPassword, {
     message: "Passwords don't match",
@@ -44,10 +44,10 @@ function Signup() {
                         <div className="field">
                             <label className="label">Email</label>
                             <div className="control">
-                                <input className="input" {...register("email")} type="email" name="email" placeholder="Your email" />
+                                <input className={`input ` + (errors.email ? 'is-danger' : '')} {...register("email")} type="email" name="email" placeholder="Your email" />
                             </div>
                             {errors.email && (
-                                <div className="error">{errors.email.message}</div>
+                                <div className="help is-danger">{errors.email.message}</div>
                             )}
                         </div>
                     
@@ -55,35 +55,35 @@ function Signup() {
                             <label className="label">Full name</label>
                         
                             <div className="control">
-                                <input className="input" {...register("fullName")} type="text" name="fullName" placeholder="Your full name" />
+                                <input className={`input ` + (errors.fullName ? 'is-danger' : '')} {...register("fullName")} type="text" name="fullName" placeholder="Your full name" />
                             </div>
                         {errors.fullName && (
-                            <div className="error">{errors.fullName.message}</div>
+                            <div className="help is-danger">{errors.fullName.message}</div>
                         )}
                         </div>
                    
                         <div className="field">
                             <label className="label">Password</label>
                             <div className="control">
-                                <input className="input" {...register("password")} type="password" name="password" placeholder="Create a password" />
+                                <input className={`input ` + (errors.password ? 'is-danger' : '') } {...register("password")} type="password" name="password" placeholder="Create a password" />
                             </div>
                             {errors.password && (
-                                <div className="error">{errors.password.message}</div>
+                                <div className="help is-danger">Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character</div>
                             )}
                         </div>
                         <div className="field">
                             <label className="label">Repeat password</label>
                             <div className="control">
-                                <input className="input"  {...register("repeatPassword")} type="password" name="repeatPassword" placeholder="Repeat your password" />
+                                <input className={`input ` + (errors.repeatPassword ? 'is-danger' : '')}  {...register("repeatPassword")} type="password" name="repeatPassword" placeholder="Repeat your password" />
                             </div>
                             {errors.repeatPassword && (
-                                <div className="error">{errors.repeatPassword.message}</div>
+                                <div className="help is-danger">{errors.repeatPassword.message}</div>
                             )}
                         </div>
                     <div>
                         <input disabled={isSubmitting} className="submit__button" type="submit" value="Submit"/>
                     </div>
-                    {errors.root && <div className="error">
+                    {errors.root && <div className="help is-danger">
                         { errors.root?.message }
                     </div>}
                 </div>
