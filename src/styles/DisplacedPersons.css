@@ -2,6 +2,15 @@
     margin-top: 1rem;
 }
 
+#add-displaced-dialog {
+    width: 80%;
+    border-width: 0;
+}
+
+.control > .select {
+    justify-items: start;
+}
+
 .ag-cell {
     text-align: left;
 }

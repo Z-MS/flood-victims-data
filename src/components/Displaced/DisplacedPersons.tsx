@@ -6,6 +6,7 @@ import useDisplacedPersonsStore from '../../stores/displacedPersons'
 import { AgGridReact } from 'ag-grid-react';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
+import { Link } from "react-router-dom"
 
 function DisplacedPersons() {
     const displacedPersons = useDisplacedPersonsStore((state: any) => state.displacedPersons)
@@ -53,6 +54,14 @@ function DisplacedPersons() {
             setUserVerified(auth.currentUser?.emailVerified)  
         }
     }, [])
+
+    if(!isUserSignedIn) {
+        return(
+            <div>
+                <p><Link to="/signin">Sign in</Link> to access this page.</p>
+            </div>
+        )
+    }
  
     return (
         <div id="displaced-page-container">

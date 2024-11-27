@@ -47,98 +47,129 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
 
     return (
         <div>
-            <button className="button error" onClick={cancel}>Cancel</button>
+            <button className="button danger__button" onClick={cancel}>Cancel</button>
             <form onSubmit={handleSubmit(addDisplacedPerson)}>
                 <div className="form__container">
-                        <div>
-                            <label>Full name</label>
-                            <input type="text" placeholder="Full name" {...register("fullName")} />
-                            {errors.fullName && (
-                                <div className="error">{errors.fullName.message}</div>
-                            )}
+                        <div className="field">
+                            <label className="label">Full name</label>
+                            <div className="control">
+                                <input className={`input ` + (errors.fullName ? 'is-danger' : '')} type="text" placeholder="Full name" {...register("fullName")} />
                             </div>
-                        <div>
-                            <label>Gender</label>
-                            <select {...register("gender")} defaultValue="placeholder">
-                                <option disabled value="placeholder">Select a gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
-                            {errors.gender && (
-                                <div className="error">{errors.gender.message}</div>
+                            {errors.fullName && (
+                                <div className="help is-danger">{errors.fullName.message}</div>
                             )}
                         </div>
-                        
-                        <div>
-                            <label>Age</label>
-                            <input type="number" placeholder="age" {...register("age", { valueAsNumber: true })} />
-                            {errors.age && (
-                                <div className="error">{errors.age.message}</div>
-                            )}
+
+                        <div className="grid">
+                            <div className="cell field">
+                                <label className="label">Gender</label>
+                                <div className="control">
+                                    <div className="select">
+                                        <select {...register("gender")} defaultValue="placeholder">
+                                            <option disabled value="placeholder">Select a gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                        {errors.gender && (
+                                            <div className="help is-danger">{errors.gender.message}</div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="cell field">
+                                <label className="label">Age</label>
+                                <div className="control">
+                                    <input className={`input ` + (errors.age ? 'is-danger' : '')} type="number" placeholder="Age" {...register("age", { valueAsNumber: true })} />
+                                </div>
+                                {errors.age && (
+                                    <div className="help is-danger">{errors.age.message}</div>
+                                )}
+                            </div>
+                            <div className="cell field">
+                                <label className="label">Phone number</label>
+                                <div className="control">
+                                    <input className={`input ` + (errors.phone ? 'is-danger' : '')} type="number" placeholder="Phone number" {...register("phone", { valueAsNumber: true })} />
+                                </div>
+                                {errors.phone && (
+                                    <div className="help is-danger">{errors.phone.message}</div>
+                                )}
+                            </div>
                         </div>
                         
-                        <div>
-                            <label>Phone number</label>
-                            <input type="number" placeholder="Phone number" {...register("phone", { valueAsNumber: true })} />
-                            {errors.phone && (
-                                <div className="error">{errors.phone.message}</div>
-                            )}
+                        <div className="grid">
+                            <div className="cell field">
+                                <label className="label">Employment status</label>
+                                <div className="control">
+                                    <div className="select">
+                                        <select {...register("employmentStatus")} defaultValue="placeholder">
+                                            <option disabled value="placeholder">Select employment status</option>
+                                            <option value="Employed">Employed</option>
+                                            <option value="Unemployed">Unemployed</option>
+                                        </select>
+                                        {errors.employmentStatus && (
+                                            <div className="help is-danger">{errors.employmentStatus.message}</div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="cell field">
+                                <label className="label">Occupation</label>
+                                <div className="control">
+                                    <input className={`input ` + (errors.occupation ? 'is-danger' : '')} type="text" placeholder="Occupation" {...register("occupation")} />
+                                    {errors.occupation && (
+                                        <div className="help is-danger">{errors.occupation.message}</div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="cell field">
+                                <label className="label">Qualification</label>
+                                <div className="control">
+                                    <input className={`input ` + (errors.qualification ? 'is-danger' : '')} type="text" placeholder="Qualification" {...register("qualification")} /> 
+                                    {errors.qualification && (
+                                        <div className="help is-danger">{errors.qualification.message}</div>
+                                    )}
+                                </div>
+                            </div>
                         </div>
-                        
+
+
+                            <div className="grid">
+                                <div className="cell field">
+                                    <label className="label">Marital status</label>
+                                    <div className="select ">
+                                        <div className="control">
+                                            <select {...register("maritalStatus")} defaultValue="placeholder">
+                                                <option disabled value="placeholder">Select marital status</option>
+                                                <option value="Single">Single</option>
+                                                <option value="Married">Married</option>
+                                                <option value="Divorced">Divorced</option>
+                                            </select>
+                                            {errors.maritalStatus && (
+                                                <div className="help is-danger">{errors.maritalStatus.message}</div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="cell field">
+                                    <label className="label">Number of children</label>
+                                    <div className="control">
+                                        <input className={`input ` + (errors.numberOfChildren ? 'is-danger' : '')} type="number" placeholder="Number of children" {...register("numberOfChildren", { valueAsNumber: true })} />
+                                        {errors.numberOfChildren && (
+                                            <div className="help is-danger">{errors.numberOfChildren.message}</div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
                     
-                    <div>
-                        <label>Employment status</label>
-                        <select {...register("employmentStatus")} defaultValue="placeholder">
-                            <option disabled value="placeholder">Select employment status</option>
-                            <option value="Employed">Employed</option>
-                            <option value="Unemployed">Unemployed</option>
-                        </select>
-                        {errors.employmentStatus && (
-                            <div className="error">{errors.employmentStatus.message}</div>
-                        )}
-                    </div>
-
-                    <div>
-                        <label>Occupation</label>
-                        <input type="text" placeholder="Occupation" {...register("occupation")} />
-                        {errors.occupation && (
-                            <div className="error">{errors.occupation.message}</div>
-                        )}
-                    </div>
-
-                    <div>
-                        <label>Qualification</label>
-                        <input type="text" placeholder="Qualification" {...register("qualification")} /> 
-                        {errors.qualification && (
-                            <div className="error">{errors.qualification.message}</div>
-                        )}
-                    </div>
-
-                    <div>
-                        <label>Marital status</label>
-                        <select {...register("maritalStatus")} defaultValue="placeholder">
-                            <option disabled value="placeholder">Select marital status</option>
-                            <option value="Single">Single</option>
-                            <option value="Married">Married</option>
-                            <option value="Divorced">Divorced</option>
-                        </select>
-                        {errors.maritalStatus && (
-                            <div className="error">{errors.maritalStatus.message}</div>
-                        )}
-
-                    </div>
-
-                    <div>
-                        <label>Number of children</label>
-                        <input type="number" placeholder="Number of children" {...register("numberOfChildren", { valueAsNumber: true })} />
-                        {errors.numberOfChildren && (
-                            <div className="error">{errors.numberOfChildren.message}</div>
-                        )}
-                    </div>
                     {errors.root && <div className="error">
                         { errors.root?.message }
                     </div>}
-                    <input disabled={isSubmitting} className="submit__button" type="submit" value="Submit"/>
+                    <div className="field">
+                        <input disabled={isSubmitting} className="submit__button" type="submit" value="Submit"/>
+                    </div>
                 </div>
             </form>
         </div>

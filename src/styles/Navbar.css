@@ -48,8 +48,7 @@ nav {
     color: white;
 }
 
-.nav-link:hover,
-.nav-link:focus {
+.nav-link:hover, .nav-link[aria-current="page"] {
     opacity: 0.65;
 }
 

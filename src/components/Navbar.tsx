@@ -1,6 +1,6 @@
 import '../styles/Navbar.css'
 import cancelIcon from '../assets/cancel-close-svgrepo-com.svg'
-import { Link, useNavigate, useLocation } from "react-router-dom"
+import { NavLink, useNavigate, useLocation } from "react-router-dom"
 import { auth } from "../firebase-config"
 import { signOut } from "firebase/auth"
 import { useEffect, useRef, useState } from "react"
@@ -47,17 +47,17 @@ function Navbar() {
             <span className="close"><img src={cancelIcon} width={20} height={20}/></span>
           </button>
           <div>
-            <p><Link id="logo" to="/">FVD</Link></p>
+            <p><NavLink id="logo" to="/">FVD</NavLink></p>
           </div>
           <nav>
             <ul ref={navbar} data-visible="false" className='nav-list'>
-              <li className='nav-item'><Link className='nav-link' to="/">Home</Link></li>
-              <li className='nav-item'><Link className='nav-link' to="/displaced">Displaced Persons</Link></li>
-              <li id='about' className='nav-item'><Link className='nav-link' to="/about">About</Link></li>
+              <li className='nav-item'><NavLink className='nav-link' to="/">Home</NavLink></li>
+              <li className='nav-item'><NavLink className='nav-link' to="/displaced">Displaced Persons</NavLink></li>
+              <li id='about' className='nav-item'><NavLink className='nav-link' to="/about">About</NavLink></li>
               {!isUserSignedIn ?       
               <>
-                <li id='signin' className='nav-item'><Link className='nav-link' to="/signin">Sign in</Link></li>
-                <li id='signup' className='nav-item'><Link className='nav-link' to="/signup">Sign up</Link></li>
+                <li id='signin' className='nav-item'><NavLink className='nav-link' to="/signin">Sign in</NavLink></li>
+                <li id='signup' className='nav-item'><NavLink className='nav-link' to="/signup">Sign up</NavLink></li>
               </>:
               <>
                 <li className='nav-item'><button id='signout-button' onClick={signOutUser}>Sign out</button></li>
