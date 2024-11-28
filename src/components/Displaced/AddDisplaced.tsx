@@ -1,3 +1,4 @@
+import "../../styles/AddDisplaced.css";
 import { collection, addDoc } from "firebase/firestore"
 import { auth, db } from '../../firebase-config'
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -11,8 +12,8 @@ const schema = z.object({
     age: z.number().min(0).max(150),
     phone: z.number().max(11111111111),
     employmentStatus: z.string().max(10),
-    occupation: z.string().max(60),
-    qualification: z.string().max(60),
+    occupation: z.string().min(4).max(60),
+    qualification: z.string().min(4).max(60),
     maritalStatus: z.string().max(8),
     numberOfChildren: z.number().min(0)
 })
@@ -60,7 +61,8 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                             )}
                         </div>
 
-                        <div className="grid">
+                        <div className="fixed-grid has-3-cols-desktop has-3-cols-tablet has-1-cols-mobile">
+                            <div className="grid">
                             <div className="cell field">
                                 <label className="label">Gender</label>
                                 <div className="control">
@@ -76,7 +78,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="cell field">
                                 <label className="label">Age</label>
                                 <div className="control">
@@ -95,9 +97,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                     <div className="help is-danger">{errors.phone.message}</div>
                                 )}
                             </div>
-                        </div>
-                        
-                        <div className="grid">
+                            
                             <div className="cell field">
                                 <label className="label">Employment status</label>
                                 <div className="control">
@@ -132,38 +132,35 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                     )}
                                 </div>
                             </div>
-                        </div>
-
-
-                            <div className="grid">
-                                <div className="cell field">
-                                    <label className="label">Marital status</label>
-                                    <div className="select ">
-                                        <div className="control">
-                                            <select {...register("maritalStatus")} defaultValue="placeholder">
-                                                <option disabled value="placeholder">Select marital status</option>
-                                                <option value="Single">Single</option>
-                                                <option value="Married">Married</option>
-                                                <option value="Divorced">Divorced</option>
-                                            </select>
-                                            {errors.maritalStatus && (
-                                                <div className="help is-danger">{errors.maritalStatus.message}</div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="cell field">
-                                    <label className="label">Number of children</label>
+                            
+                            <div className="cell field">
+                                <label className="label">Marital status</label>
+                                <div className="select ">
                                     <div className="control">
-                                        <input className={`input ` + (errors.numberOfChildren ? 'is-danger' : '')} type="number" placeholder="Number of children" {...register("numberOfChildren", { valueAsNumber: true })} />
-                                        {errors.numberOfChildren && (
-                                            <div className="help is-danger">{errors.numberOfChildren.message}</div>
+                                        <select {...register("maritalStatus")} defaultValue="placeholder">
+                                            <option disabled value="placeholder">Select marital status</option>
+                                            <option value="Single">Single</option>
+                                            <option value="Married">Married</option>
+                                            <option value="Divorced">Divorced</option>
+                                        </select>
+                                        {errors.maritalStatus && (
+                                            <div className="help is-danger">{errors.maritalStatus.message}</div>
                                         )}
                                     </div>
                                 </div>
                             </div>
-                    
+
+                            <div className="cell field">
+                                <label className="label">Number of children</label>
+                                <div className="control">
+                                    <input className={`input ` + (errors.numberOfChildren ? 'is-danger' : '')} type="number" placeholder="Number of children" {...register("numberOfChildren", { valueAsNumber: true })} />
+                                    {errors.numberOfChildren && (
+                                        <div className="help is-danger">{errors.numberOfChildren.message}</div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {errors.root && <div className="error">
                         { errors.root?.message }
                     </div>}
