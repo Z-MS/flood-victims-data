@@ -1,14 +1,16 @@
 import '../styles/Navbar.css'
 import cancelIcon from '../assets/cancel-close-svgrepo-com.svg'
+import logo from '../assets/logo.jpg'
 import { NavLink, useNavigate, useLocation } from "react-router-dom"
+import useAuthenticationStore from '../stores/auth'
 import { auth } from "../firebase-config"
 import { signOut } from "firebase/auth"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 
 function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
-  const [isUserSignedIn, setIsUserSignedIn] = useState<boolean>(false)
+  const { isUserSignedIn, setSignIn } = useAuthenticationStore()
   const navbar = useRef<HTMLUListElement | null>(null)
   const navToggle = useRef<HTMLButtonElement | null>(null)
 
@@ -25,7 +27,7 @@ function Navbar() {
 
   async function signOutUser () {
     try {
-      setIsUserSignedIn(false)
+      // setIsUserSignedIn(false)
       // sign out user and navigate to Homepage
       await signOut(auth)
       navigate('/')
@@ -35,8 +37,9 @@ function Navbar() {
   }
 
   useEffect(() => {
-    if(auth.currentUser && location.pathname === "/displaced") {
-      setIsUserSignedIn(true)
+    setSignIn()
+    if(isUserSignedIn && location.pathname === "/displaced") {
+      // setIsUserSignedIn(true)
     }
   }, [location.pathname])
 
@@ -47,7 +50,7 @@ function Navbar() {
             <span className="close"><img src={cancelIcon} width={20} height={20}/></span>
           </button>
           <div>
-            <p><NavLink id="logo" to="/">FVD</NavLink></p>
+            <p><NavLink id="logo" to="/"><img src={logo} width={40} height={40}/></NavLink></p>
           </div>
           <nav>
             <ul ref={navbar} data-visible="false" className='nav-list'>

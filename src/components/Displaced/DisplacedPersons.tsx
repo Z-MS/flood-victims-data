@@ -3,6 +3,7 @@ import { auth } from '../../firebase-config'
 import { useEffect, useRef, useState, useMemo } from "react"
 import AddDisplaced from "./AddDisplaced"
 import useDisplacedPersonsStore from '../../stores/displacedPersons'
+import useAuthenticationStore from "../../stores/auth"
 import { AgGridReact } from 'ag-grid-react';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
@@ -11,7 +12,7 @@ import { Link } from "react-router-dom"
 function DisplacedPersons() {
     const displacedPersons = useDisplacedPersonsStore((state: any) => state.displacedPersons)
     const { fetchDisplacedPersons, displacedDataLoading } = useDisplacedPersonsStore()
-  
+    
     const [isUserSignedIn, setIsUserSignedIn] = useState<boolean>(false)
     const [userVerified, setUserVerified] = useState<boolean|undefined>(false)
     

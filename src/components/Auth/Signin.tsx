@@ -16,10 +16,10 @@ function Signin() {
     const navigate = useNavigate()
     const { register, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm<SignInFields>({resolver: zodResolver(schema)})
     const loginUser: SubmitHandler<SignInFields> = async(data) => {
-    
         
         try {
             await signInWithEmailAndPassword(auth, data.email, data.password)
+            // set user signed in from store
             navigate('/displaced')         
         } catch (error) {
             // check if error is due to network or invalid credentials
