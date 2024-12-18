@@ -33,25 +33,27 @@ function App() {
           {
             onHomepage && (
               <>
-          <div id='title'>
-            <h1>Swift Relief Foundation</h1>
-            <h2>Maiduguri Flood Victims Data Capture</h2>
-          </div>
-          <p>Last updated: </p>
-          {
-            displacedDataLoading && (
-              <p>Calculating...</p>
-            )
-          }
-          <div id='data-container'>
-            <StatCard title="Total Number of Displaced Persons" stats={totalDisplacedCount}/>
-            <StatCard title="Children" stats={numberOfChildren}/>
+                <div id='title'>
+                  <h1>Swift Relief Foundation</h1>
+                  <h2>Maiduguri Flood Victims Data Capture</h2>
+                </div>
+                <p>Last updated: </p>
+                
+                {
+                displacedDataLoading && (
+                  <p>Calculating...</p>
+                )
+                }
 
-            <StatCard title="Women and girls" stats={totalFemalesCount}>
-              <p className='stat-title'>Widows - <span className='number'>{numberOfWidows}</span></p>
-              <p className='stat-title'>Divorcees - <span className='number'>{numberOfDivorcees}</span></p>
-            </StatCard>
-          </div>
+                <div id='data-container'>
+                  <StatCard title="Total Number of Displaced Persons" stats={totalDisplacedCount}/>
+                  <StatCard title="Children" stats={numberOfChildren}/>
+
+                  <StatCard title="Women and girls" stats={totalFemalesCount}>
+                    <p className='stat-title'>Widows - <span className='number'>{numberOfWidows}</span></p>
+                    <p className='stat-title'>Divorcees - <span className='number'>{numberOfDivorcees}</span></p>
+                  </StatCard>
+                </div>
               </>
             )
           }
