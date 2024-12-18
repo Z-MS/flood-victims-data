@@ -13,7 +13,7 @@ function DisplacedPersons() {
     const { fetchDisplacedPersons, displacedDataLoading } = useDisplacedPersonsStore()
     
     const [isUserSignedIn, setIsUserSignedIn] = useState<boolean>(false)
-    const [userVerified, setUserVerified] = useState<boolean|undefined>(false)
+    const [userVerified, setUserVerified] = useState<boolean>(false)
     
     const dialog = useRef<HTMLDialogElement>(null)
 
@@ -67,28 +67,32 @@ function DisplacedPersons() {
         <div id="displaced-page-container">
             {   
                 isUserSignedIn && !userVerified &&
-                (<div className="notice">
+                (<div>
                     <p>Please check your email inbox to verify your email address</p>
-                    <button className="button">Resend link</button>
+                    <button className="button notice">Resend link</button>
                 </div>)
             }
             
             <div>
-                {isUserSignedIn && (<button className="button add__button" onClick={openCreateForm}>Add displaced person</button>) }
-                <dialog ref={dialog} id="add-displaced-dialog">
-                    <AddDisplaced onDisplacedPersonAdded={closeCreateForm}/>
-                </dialog>
-                <div className="ag-theme-quartz"style={{height: 500}}>
-                    <AgGridReact
-                        loading={displacedDataLoading}
-                        rowData={displacedPersons}
-                        columnDefs={colDefs}
-                        defaultColDef={defaultColDef}
-                        pagination={true}
-                        paginationPageSize={10}
-                        paginationPageSizeSelector={[10, 20, 50]}
-                    />
-                </div>
+                { userVerified && 
+                    (<> 
+                        <button className="button add__button" onClick={openCreateForm}>Add displaced person</button>
+                        <dialog ref={dialog} id="add-displaced-dialog">
+                            <AddDisplaced onDisplacedPersonAdded={closeCreateForm}/>
+                        </dialog>
+                        <div className="ag-theme-quartz"style={{height: 500}}>
+                            <AgGridReact
+                                loading={displacedDataLoading}
+                                rowData={displacedPersons}
+                                columnDefs={colDefs}
+                                defaultColDef={defaultColDef}
+                                pagination={true}
+                                paginationPageSize={10}
+                                paginationPageSizeSelector={[10, 20, 50]}
+                            />
+                        </div>
+                    </>)
+                }
             </div>
         </div>
     )

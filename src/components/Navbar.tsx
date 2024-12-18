@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react"
 function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { isUserSignedIn, setSignIn } = useAuthenticationStore()
+  const { isUserSignedIn, setSignIn, authStateLoading } = useAuthenticationStore()
   const navbar = useRef<HTMLUListElement | null>(null)
   const navToggle = useRef<HTMLButtonElement | null>(null)
 
@@ -38,9 +38,6 @@ function Navbar() {
 
   useEffect(() => {
     setSignIn()
-    if(isUserSignedIn && location.pathname === "/displaced") {
-      // setIsUserSignedIn(true)
-    }
   }, [location.pathname])
 
   return(
@@ -57,14 +54,20 @@ function Navbar() {
               <li className='nav-item'><NavLink className='nav-link' to="/">Home</NavLink></li>
               <li className='nav-item'><NavLink className='nav-link' to="/displaced">Displaced Persons</NavLink></li>
               <li id='about' className='nav-item'><NavLink className='nav-link' to="/about">About</NavLink></li>
-              {!isUserSignedIn ?       
+              
+              {authStateLoading && <li className='nav-item'>Checking login status...</li>}
+              
+              {(!authStateLoading && !isUserSignedIn) && (       
               <>
                 <li id='signin' className='nav-item'><NavLink className='nav-link' to="/signin">Sign in</NavLink></li>
                 <li id='signup' className='nav-item'><NavLink className='nav-link' to="/signup">Sign up</NavLink></li>
-              </>:
+              </>)
+              }
+
+              {(!authStateLoading && isUserSignedIn) && (
               <>
                 <li className='nav-item'><button id='signout-button' onClick={signOutUser}>Sign out</button></li>
-              </>
+              </>)
               }
             </ul>
               
