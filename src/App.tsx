@@ -34,7 +34,8 @@ function App() {
             onHomepage && (
               <>
           <div id='title'>
-            <h1>Maiduguri Flood Victims Data Capture</h1>
+            <h1>Swift Relief Foundation</h1>
+            <h2>Maiduguri Flood Victims Data Capture</h2>
           </div>
           <p>Last updated: </p>
           {
