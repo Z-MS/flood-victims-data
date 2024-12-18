@@ -3,7 +3,6 @@ import { auth } from '../../firebase-config'
 import { useEffect, useRef, useState, useMemo } from "react"
 import AddDisplaced from "./AddDisplaced"
 import useDisplacedPersonsStore from '../../stores/displacedPersons'
-import useAuthenticationStore from "../../stores/auth"
 import { AgGridReact } from 'ag-grid-react';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
