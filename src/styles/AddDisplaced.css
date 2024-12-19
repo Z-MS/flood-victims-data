@@ -1,9 +1,19 @@
-.fixed-grid > .grid {
+#displaced-form-grid {
+    display: grid;
     justify-items: start;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
 }
 
-@media (min-width: 380px) and (max-width: 760px) {
-    .fixed-grid > .grid {
-        grid-template-columns: 1fr 1fr;
+@media (max-width: 480px) {
+    #displaced-form-grid {
+        grid-template-columns: 1fr;
+        gap: 1em;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    #displaced-form-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

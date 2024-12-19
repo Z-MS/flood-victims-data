@@ -61,9 +61,8 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                             )}
                         </div>
 
-                        <div className="fixed-grid has-3-cols-desktop has-3-cols-tablet has-1-cols-mobile">
-                            <div className="grid">
-                            <div className="cell field">
+                        <div id="displaced-form-grid">
+                            <div className="field">
                                 <label className="label">Gender</label>
                                 <div className="control">
                                     <div className="select">
@@ -79,7 +78,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                 </div>
                             </div>
 
-                            <div className="cell field">
+                            <div className="field">
                                 <label className="label">Age</label>
                                 <div className="control">
                                     <input className={`input ` + (errors.age ? 'is-danger' : '')} type="number" placeholder="Age" {...register("age", { valueAsNumber: true })} />
@@ -88,7 +87,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                     <div className="help is-danger">{errors.age.message}</div>
                                 )}
                             </div>
-                            <div className="cell field">
+                            <div className="field">
                                 <label className="label">Phone number</label>
                                 <div className="control">
                                     <input className={`input ` + (errors.phone ? 'is-danger' : '')} type="number" placeholder="Phone number" {...register("phone", { valueAsNumber: true })} />
@@ -98,7 +97,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                 )}
                             </div>
                             
-                            <div className="cell field">
+                            <div className="field">
                                 <label className="label">Employment status</label>
                                 <div className="control">
                                     <div className="select">
@@ -114,7 +113,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                 </div>
                             </div>
 
-                            <div className="cell field">
+                            <div className="field">
                                 <label className="label">Occupation</label>
                                 <div className="control">
                                     <input className={`input ` + (errors.occupation ? 'is-danger' : '')} type="text" placeholder="Occupation" {...register("occupation")} />
@@ -123,7 +122,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                     )}
                                 </div>
                             </div>
-                            <div className="cell field">
+                            <div className="field">
                                 <label className="label">Qualification</label>
                                 <div className="control">
                                     <input className={`input ` + (errors.qualification ? 'is-danger' : '')} type="text" placeholder="Qualification" {...register("qualification")} /> 
@@ -133,7 +132,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                 </div>
                             </div>
                             
-                            <div className="cell field">
+                            <div className="field">
                                 <label className="label">Marital status</label>
                                 <div className="select ">
                                     <div className="control">
@@ -150,7 +149,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                 </div>
                             </div>
 
-                            <div className="cell field">
+                            <div className="field">
                                 <label className="label">Number of children</label>
                                 <div className="control">
                                     <input className={`input ` + (errors.numberOfChildren ? 'is-danger' : '')} type="number" placeholder="Number of children" {...register("numberOfChildren", { valueAsNumber: true })} />
@@ -160,7 +159,6 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                                 </div>
                             </div>
                         </div>
-                    </div>
                     {errors.root && <div className="error">
                         { errors.root?.message }
                     </div>}
