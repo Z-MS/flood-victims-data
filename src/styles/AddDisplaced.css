@@ -1,3 +1,9 @@
 .fixed-grid > .grid {
     justify-items: start;
 }
+
+@media (min-width: 380px) and (max-width: 760px) {
+    .fixed-grid > .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
