@@ -57,11 +57,11 @@ input[type="text, number"] {
 }
 
 .submit__button {
-  background-color: rgb(29 215 47);
+  background-color: #4bd850;
 }
 
 .add__button {
-  background-color: rgb(100, 141, 237);
+  background-color: #4db6ac;
 }
 
 .danger__button {

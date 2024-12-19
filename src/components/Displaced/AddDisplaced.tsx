@@ -61,7 +61,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                             )}
                         </div>
 
-                        <div className="fixed-grid has-3-cols-desktop has-3-cols-tablet has-1-cols-mobile">
+                        <div className="fixed-grid has-3-cols-desktop has-2-cols-tablet has-1-cols-mobile">
                             <div className="grid">
                             <div className="cell field">
                                 <label className="label">Gender</label>
