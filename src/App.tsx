@@ -29,10 +29,12 @@ function App() {
     <>
         <Navbar/>
         <main data-theme="light">
-          <Outlet/>
+          <div className="container">
+            <Outlet/>
+          </div>
           {
             onHomepage && (
-              <>
+              <div id='hero'>
                 <div id='title'>
                   <h1>Swift Relief Foundation</h1>
                   <h2>Maiduguri Flood Victims Data Capture</h2>
@@ -45,7 +47,7 @@ function App() {
                 )
                 }
 
-                <div id='data-container'>
+                <div id='data-container' className='container'>
                   <StatCard title="Total Number of Displaced Persons" stats={totalDisplacedCount}/>
                   <StatCard title="Children" stats={numberOfChildren}/>
 
@@ -54,7 +56,7 @@ function App() {
                     <p className='stat-title'>Divorcees - <span className='number'>{numberOfDivorcees}</span></p>
                   </StatCard>
                 </div>
-              </>
+              </div>
             )
           }
         </main>
