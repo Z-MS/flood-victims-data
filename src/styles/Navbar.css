@@ -2,7 +2,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #26a69a;
+    background-color: #98AB69;
     color: white;
     text-align: center;
 }
@@ -59,7 +59,7 @@ nav {
     padding: 0.25em 0.5em;
     font-size: 1rem;
     font-weight: 600;
-    color: #00897b;
+    color: #98AB69;
 }
 
 #signout-button:hover {
@@ -80,7 +80,7 @@ nav {
         z-index: 1000;
         flex-direction: column;
         padding: 10rem 0 0 2em;
-        background-color: #12ab9d;
+        background-color: #98AB69;
         transform: translateX(100%);
         transition: transform 350ms ease-out;
     }
@@ -102,7 +102,7 @@ nav {
         height: 3em;
         padding-top: 0em;
         border-radius: 50%;
-        background-color: #00796b;
+        background-color: #6c7b46;
         color: white;
         transition: opacity 250ms ease;    
         position: absolute;
