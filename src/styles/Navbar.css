@@ -104,8 +104,8 @@ nav {
         color: white;
         transition: opacity 250ms ease;    
         position: absolute;
-        top: 1.15rem;
-        right: 2rem;
+        top: 0.75rem;
+        right: 1.5rem;
         z-index: 9999;
     }
     
@@ -149,5 +149,9 @@ nav {
     
     .hamburger::after {
         transform: translateY(3px);
+    }
+
+    #signout-button {
+        font-size: 1rem;
     }
 }
