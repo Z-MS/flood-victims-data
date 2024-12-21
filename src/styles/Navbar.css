@@ -7,11 +7,8 @@ header {
     text-align: center;
 }
 
-#logo {
-    font-size: 1.5rem;
-    font-weight: 900;
-    margin-left: 1rem;
-    color: white;
+#logo-container {
+    margin: 0.15rem 0 0.15rem 1.5em; 
 }
 
 .nav-toggle, .close {
@@ -24,18 +21,19 @@ nav {
   align-items: center;
   justify-content: center;
   padding-top: 0.25rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 
 .nav-list {
   display: flex;
   gap: 1rem;
   list-style: none;
+  margin: 0.85rem 0 0.75rem 0;
 }
 
 .nav-item {
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: white;
 }
@@ -57,7 +55,7 @@ nav {
     border-width: 0;
     border-radius: 1rem;
     padding: 0.25em 0.5em;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: #98AB69;
 }

@@ -46,8 +46,8 @@ function Navbar() {
             <span className="hamburger"></span>
             <span className="close"><img src={cancelIcon} width={20} height={20}/></span>
           </button>
-          <div>
-            <p><NavLink id="logo" to="/"><img src={logo} width={40} height={40}/></NavLink></p>
+          <div id="logo-container">
+            <NavLink id="logo" to="/"><img src={logo} width={30} height={30}/></NavLink>
           </div>
           <nav>
             <ul ref={navbar} data-visible="false" className='nav-list'>
