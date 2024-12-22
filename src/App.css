@@ -7,7 +7,7 @@
 #hero {
   background-image: url('./assets/Flood.jpeg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
 }
 
 a, a:visited {
@@ -37,7 +37,7 @@ a, a:visited {
   display: flex;
   gap: 1rem;
   padding-top: 5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 3rem;
 }
 
 .button-link {
