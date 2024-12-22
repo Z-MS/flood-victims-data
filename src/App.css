@@ -135,8 +135,11 @@ input[type="text, number"] {
     padding-top: 2.5rem;
   }
 
-  .button-link {
-    padding: 0.35em;
+  #stats-link-button > a, #project-link-button > a {
+    font-size: 0.75rem;
   }
 
+  .button-link {
+    padding: 0.25em;
+  }
 }
