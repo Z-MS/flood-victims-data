@@ -23,6 +23,8 @@ a, a:visited {
 }
 
 #title {
+  padding-top: 5rem;
+  padding-bottom: 4.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,6 +43,7 @@ a, a:visited {
 }
 
 #data-container {
+  margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
@@ -97,7 +100,7 @@ input[type="text, number"] {
     grid-template-columns: none;
   }
 
-  #title > h2 {
+  #title > h1, h2 {
     font-size: 2.5ch;
   }
 

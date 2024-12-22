@@ -34,11 +34,13 @@ function App() {
           </div>
           {
             onHomepage && (
+              <>
               <div id='hero' className='overlay'>
                 <div id='title'>
                   <h1>Swift Relief Foundation</h1>
                   <h2>Maiduguri Flood Victims Data Capture</h2>
                 </div>
+              </div>
                 {/* <p>Last updated: </p> */}
                 
                 {
@@ -56,7 +58,7 @@ function App() {
                     <p className='stat-title'>Divorcees - <span className='number'>{numberOfDivorcees}</span></p>
                   </StatCard>
                 </div>
-              </div>
+              </>
             )
           }
         </main>
