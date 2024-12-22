@@ -50,6 +50,11 @@ a, a:visited {
   background-color: #98ab69;
 }
 
+#project-link-button:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
 #project-link-button > a {
   color: #ffffff;
 }
@@ -58,8 +63,13 @@ a, a:visited {
   background-color: #ffffff;
 }
 
+#stats-link-button:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
 #stats-link-button > a {
-  color: #98ab69;
+  color: #6f7c4c;;
 }
 
 #data-container {
