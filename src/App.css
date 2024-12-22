@@ -17,7 +17,6 @@ a, a:visited {
 
 #title {
   padding-top: 3rem;
-  padding-bottom: 4.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,15 +37,29 @@ a, a:visited {
 .button-links {
   display: flex;
   gap: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 1rem;
 }
 
 .button-link {
-  background-color: white;
   padding: 0.5em;
   border-radius: 1rem;
+  text-transform: uppercase;
 }
 
-.button-link > a {
+#project-link-button {
+  background-color: #98ab69;
+}
+
+#project-link-button > a {
+  color: #ffffff;
+}
+
+#stats-link-button {
+  background-color: #ffffff;
+}
+
+#stats-link-button > a {
   color: #98ab69;
 }
 
@@ -118,6 +131,7 @@ input[type="text, number"] {
 
   .button-links {
     flex-direction: column;
+    padding-top: 2.5rem;
   }
 
 }

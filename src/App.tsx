@@ -40,8 +40,8 @@ function App() {
                   <h1>Swift Relief Foundation</h1>
                   <h2>Maiduguri Flood Victims Data Capture</h2>
                   <div className='button-links'>
-                    <span id="stats-link-button" className='button-link'><NavLink to="/">See Statistics</NavLink></span>
-                    <span id="project-link-button" className='button-link'><NavLink to="/">About the project</NavLink></span>
+                    <span id="stats-link-button" className='button-link'><NavLink to="/">See the Statistics</NavLink></span>
+                    <span id="project-link-button" className='button-link'><NavLink to="/">Learn About the Project</NavLink></span>
                   </div>
                 </div>
               </div>
