@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation, NavLink } from 'react-router-dom'
 import './App.css'
 import './styles/bulma_override.scss'
 import Navbar from './components/Navbar'
@@ -39,6 +39,10 @@ function App() {
                 <div id='title'>
                   <h1>Swift Relief Foundation</h1>
                   <h2>Maiduguri Flood Victims Data Capture</h2>
+                  <div className='button-links'>
+                    <span id="stats-link-button" className='button-link'><NavLink to="/">See Statistics</NavLink></span>
+                    <span id="project-link-button" className='button-link'><NavLink to="/">About the project</NavLink></span>
+                  </div>
                 </div>
               </div>
                 {/* <p>Last updated: </p> */}

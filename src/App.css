@@ -4,12 +4,12 @@
   max-width: 1100px;
 }
 
-/* .overlay {
+.overlay {
   border-image: linear-gradient(
-    hsla(100, 2%, 37%, 0.6),
+    hsla(100, 2%, 37%, 0.1),
     hsla(100, 2%, 37%, 0.6)
   ) fill 1;
-} */
+}
 
 #hero {
   background-image: url('./assets/Flood.jpeg');
@@ -23,7 +23,7 @@ a, a:visited {
 }
 
 #title {
-  padding-top: 5rem;
+  padding-top: 3rem;
   padding-bottom: 4.5rem;
   display: flex;
   align-items: center;
@@ -40,6 +40,21 @@ a, a:visited {
   padding-bottom: 0.25em;
   margin: 0.25em 0.25em 0.25em 0.25em;
   /* font-size: 2rem; */
+}
+
+.button-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.button-link {
+  background-color: white;
+  padding: 0.5em;
+  border-radius: 1rem;
+}
+
+.button-link > a {
+  color: #98ab69;
 }
 
 #data-container {
@@ -106,6 +121,10 @@ input[type="text, number"] {
 
   #title > h2 {
     font-size: 2.5ch;
+  }
+
+  .button-links {
+    flex-direction: column;
   }
 
 }
