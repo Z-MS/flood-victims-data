@@ -34,12 +34,12 @@ function App() {
           </div>
           {
             onHomepage && (
-              <div id='hero'>
+              <div id='hero' className='overlay'>
                 <div id='title'>
                   <h1>Swift Relief Foundation</h1>
                   <h2>Maiduguri Flood Victims Data Capture</h2>
                 </div>
-                <p>Last updated: </p>
+                {/* <p>Last updated: </p> */}
                 
                 {
                 displacedDataLoading && (
