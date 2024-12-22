@@ -130,8 +130,13 @@ input[type="text, number"] {
   }
 
   .button-links {
+    gap: 0.5rem;
     flex-direction: column;
     padding-top: 2.5rem;
+  }
+
+  .button-link {
+    padding: 0.35em;
   }
 
 }
