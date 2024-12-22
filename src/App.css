@@ -100,7 +100,11 @@ input[type="text, number"] {
     grid-template-columns: none;
   }
 
-  #title > h1, h2 {
+  #title > h1 {
+    font-size: 3ch;
+  }
+
+  #title > h2 {
     font-size: 2.5ch;
   }
 
