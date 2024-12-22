@@ -37,7 +37,7 @@ a, a:visited {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   margin: 0.25em 0.25em 0.25em 0.25em;
-  font-size: 2rem;
+  /* font-size: 2rem; */
 }
 
 #data-container {
@@ -97,8 +97,8 @@ input[type="text, number"] {
     grid-template-columns: none;
   }
 
-  #title > h1, h2 {
-    font-size: 2.7ch;
+  #title > h2 {
+    font-size: 2.5ch;
   }
 
 }
