@@ -1,8 +1,19 @@
+/* Links */
+
+a, a:visited {
+  text-decoration: none;
+  color:rgb(29, 88, 215)
+}
+
+/* Container */
+
 .container {
   width: 90%;
   margin: 0 auto;
   max-width: 1100px;
 }
+
+/* Hero section */
 
 #hero {
   background-image: url('./assets/Flood.jpeg');
@@ -10,10 +21,6 @@
   background-size: cover;
 }
 
-a, a:visited {
-  text-decoration: none;
-  color:rgb(29, 88, 215)
-}
 
 #title {
   padding-top: 3rem;
@@ -37,6 +44,21 @@ a, a:visited {
   font-size: 3ch;
   font-weight: 600;
 }
+
+.section-title {
+  margin-top: 0;
+  padding-top: 1rem;
+  font-size: 2.5rem;
+  color: rgb(223, 168, 97);
+}
+
+/* Stats section */
+
+#stats-section {
+  background-color: white;
+}
+
+/* Buttons and links */
 
 .button-links {
   display: flex;
@@ -84,6 +106,8 @@ a, a:visited {
   gap: 1rem;
   place-content: center;
 }
+
+/* Forms */
 
 form {
   margin: 0 auto;

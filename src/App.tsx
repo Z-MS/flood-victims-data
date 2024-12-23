@@ -48,8 +48,8 @@ function App() {
                 </section>
 
                 <main data-theme="light">
-                  <section>
-                    <h2>Statistics</h2>
+                  <section id='stats-section'>
+                    <h2 className='section-title'>Statistics</h2>
                     {
                       displacedDataLoading && (
                         <p>Calculating...</p>
@@ -61,9 +61,9 @@ function App() {
                       <StatCard title="Children" stats={numberOfChildren}/>
 
                       <StatCard title="Women and girls" stats={totalFemalesCount}>
+                      </StatCard>
                         <p className='stat-title'>Widows - <span className='number'>{numberOfWidows}</span></p>
                         <p className='stat-title'>Divorcees - <span className='number'>{numberOfDivorcees}</span></p>
-                      </StatCard>
                     </div>
                   </section>
                 </main>
