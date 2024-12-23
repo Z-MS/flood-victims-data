@@ -24,13 +24,18 @@ a, a:visited {
   color: white;
 }
 
-#title > h1, h2 {
+#title > h1, #subtitle {
   background-color: #98ab69c4;
   padding-left: 0.25em;
   padding-right: 0.25em;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   margin: 0.25em 0.25em 0.25em 0.25em;
+}
+
+#subtitle {
+  font-size: 3ch;
+  font-weight: 600;
 }
 
 .button-links {
@@ -134,7 +139,7 @@ input[type="text, number"] {
     font-size: 3ch;
   }
 
-  #title > h2 {
+  #subtitle {
     font-size: 2ch;
   }
 
