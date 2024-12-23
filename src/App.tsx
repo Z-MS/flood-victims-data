@@ -28,29 +28,28 @@ function App() {
   return (
     <>
         <Navbar/>
-        <main data-theme="light">
           <div className="container">
             <Outlet/>
           </div>
           {
             onHomepage && (
               <>
-              <div id='hero' className='overlay'>
-                <div id='title'>
-                  <h1>Swift Relief Foundation</h1>
-                  <h2>Maiduguri Flood Victims Data Capture</h2>
-                  <div className='button-links'>
-                    <span id="stats-link-button" className='button-link'><NavLink to="/">View the Statistics</NavLink></span>
-                    <span id="project-link-button" className='button-link'><NavLink to="/">Learn About the Project</NavLink></span>
+                <div id='hero' className='overlay'>
+                  <div id='title'>
+                    <h1>Swift Relief Foundation</h1>
+                    <h2>Maiduguri Flood Victims Data Capture</h2>
+                    <div className='button-links'>
+                      <span id="stats-link-button" className='button-link'><NavLink to="/">View the Statistics</NavLink></span>
+                      <span id="project-link-button" className='button-link'><NavLink to="/">Learn About the Project</NavLink></span>
+                    </div>
                   </div>
                 </div>
-              </div>
-                {/* <p>Last updated: </p> */}
-                
+              
+              <main data-theme="light">
                 {
-                displacedDataLoading && (
-                  <p>Calculating...</p>
-                )
+                  displacedDataLoading && (
+                    <p>Calculating...</p>
+                  )
                 }
 
                 <div id='data-container' className='container'>
@@ -62,10 +61,10 @@ function App() {
                     <p className='stat-title'>Divorcees - <span className='number'>{numberOfDivorcees}</span></p>
                   </StatCard>
                 </div>
+                </main>
               </>
             )
           }
-        </main>
     </>
   )
 }

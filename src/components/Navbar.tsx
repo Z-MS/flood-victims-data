@@ -27,7 +27,6 @@ function Navbar() {
 
   async function signOutUser () {
     try {
-      // setIsUserSignedIn(false)
       // sign out user and navigate to Homepage
       await signOut(auth)
       navigate('/')
