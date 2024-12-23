@@ -62,8 +62,10 @@ function App() {
 
                       <StatCard title="Women and girls" stats={totalFemalesCount}>
                       </StatCard>
-                        <p className='stat-title'>Widows - <span className='number'>{numberOfWidows}</span></p>
-                        <p className='stat-title'>Divorcees - <span className='number'>{numberOfDivorcees}</span></p>
+                      <StatCard title="Widows" stats={numberOfWidows}>
+                      </StatCard>
+                      <StatCard title="Divorcees" stats={numberOfDivorcees}>
+                      </StatCard>
                     </div>
                   </section>
                 </main>
