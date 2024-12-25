@@ -45,14 +45,15 @@ function Navbar() {
             <span className="hamburger"></span>
             <span className="close"><img src={cancelIcon} width={20} height={20}/></span>
           </button>
-          <div id="logo-container">
+          <div id="header-logo-container">
             <NavLink id="logo" to="/"><img src={logo} width={30} height={30}/></NavLink>
           </div>
-          <nav>
+          <nav id='header-nav'>
             <ul ref={navbar} data-visible="false" className='nav-list'>
               <li className='nav-item'><NavLink className='nav-link' to="/">Home</NavLink></li>
               <li className='nav-item'><NavLink className='nav-link' to="/displaced">Displaced Persons</NavLink></li>
               <li id='about' className='nav-item'><NavLink className='nav-link' to="/about">About</NavLink></li>
+              <li id='contact' className='nav-item'><NavLink className='nav-link' to="/about">Contact</NavLink></li>
               
               {authStateLoading && <li className='nav-item'>Checking login status...</li>}
               
