@@ -1,0 +1,14 @@
+footer {
+    margin-top: auto;
+    background-color: #a8c06d;
+}
+
+#footer-nav {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+}

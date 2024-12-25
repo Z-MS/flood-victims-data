@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import StatCard from './components/StatCard'
 import { useEffect, useState } from 'react'
 import useDisplacedPersonsStore from './stores/displacedPersons'
+import Footer from './components/Footer'
 
 function App() {
   const location = useLocation()
@@ -72,6 +73,7 @@ function App() {
             </>
             )
           }
+        <Footer/>
     </>
   )
 }
