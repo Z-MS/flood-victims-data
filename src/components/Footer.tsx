@@ -14,7 +14,7 @@ function Footer() {
                     <li className='nav-item'><NavLink className='nav-link' to="/">Home</NavLink></li>
                     <li id='displaced-link-item' className='nav-item'><NavLink className='nav-link' to="/displaced">Displaced Persons</NavLink></li>
                     <li className='nav-item'><NavLink className='nav-link' to="/about">About</NavLink></li>
-                    <li className='nav-item'><NavLink className='nav-link' to="/about">Contact</NavLink></li>
+                    <li className='nav-item'><NavLink className='nav-link' to="/contact">Contact</NavLink></li>
                 </ul>
             </nav>
             <p id='footer-copyright'><span>{today.getFullYear()}</span> Swift Relief Foundation</p>

@@ -11,6 +11,7 @@ import ResetPassword from './components/Auth/ResetPassword.tsx'
 import ForgotPassword from './components/Auth/ForgotPassword.tsx'
 import EmailAction from './components/Auth/EmailAction.tsx'
 import About from './components/About.tsx'
+import Contact from './components/Contact.tsx'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />
+      },
+      {
+        path: "/contact",
+        element: <Contact/>
       },
       {
         path: "/displaced",

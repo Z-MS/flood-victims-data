@@ -62,7 +62,7 @@ function Navbar() {
               <li className='nav-item'><NavLink className='nav-link' to="/">Home</NavLink></li>
               <li className='nav-item'><NavLink className='nav-link' to="/displaced">Displaced Persons</NavLink></li>
               <li id='about' className='nav-item'><NavLink className='nav-link' to="/about">About</NavLink></li>
-              <li id='contact' className='nav-item'><NavLink className='nav-link' to="/about">Contact</NavLink></li>
+              <li id='contact' className='nav-item'><NavLink className='nav-link' to="/contact">Contact</NavLink></li>
               
               {authStateLoading && <li className='nav-item'>Checking login status...</li>}
               
