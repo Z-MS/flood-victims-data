@@ -12,7 +12,7 @@ function Footer() {
             </div>
               <ul id='footer-nav-list'>
                 <li className='nav-item'><NavLink className='nav-link' to="/">Home</NavLink></li>
-                {/* <li id='displaced-link-item' className='nav-item'><NavLink className='nav-link' to="/displaced">Displaced Persons</NavLink></li> */}
+                <li id='displaced-link-item' className='nav-item'><NavLink className='nav-link' to="/displaced">Displaced Persons</NavLink></li>
                 <li className='nav-item'><NavLink className='nav-link' to="/about">About</NavLink></li>
                 <li className='nav-item'><NavLink className='nav-link' to="/about">Contact</NavLink></li>
               </ul>
