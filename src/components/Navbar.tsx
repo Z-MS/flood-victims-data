@@ -36,6 +36,8 @@ function Navbar() {
   }
 
   useEffect(() => {
+    // close the navbar when the page changes
+    toggleNavbar()
     setSignIn()
   }, [location.pathname])
 
