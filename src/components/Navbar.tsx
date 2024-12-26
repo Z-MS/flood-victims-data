@@ -11,17 +11,22 @@ function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
   const { isUserSignedIn, setSignIn, authStateLoading } = useAuthenticationStore()
-  const navbar = useRef<HTMLUListElement | null>(null)
+  const sideNavbar = useRef<HTMLUListElement | null>(null)
   const navToggle = useRef<HTMLButtonElement | null>(null)
 
+  function closeNavbar() {
+      // close navbar is specific to onComponentMount
+      sideNavbar.current?.setAttribute('data-visible', 'false')
+      navToggle.current?.setAttribute('aria-expanded', 'false')
+  }
+
   function toggleNavbar() {
-    const visibility = navbar.current?.getAttribute('data-visible')
+    const visibility = sideNavbar.current?.getAttribute('data-visible')
     if(visibility === 'false') {
-      navbar.current?.setAttribute('data-visible', 'true')
+      sideNavbar.current?.setAttribute('data-visible', 'true')
       navToggle.current?.setAttribute('aria-expanded', 'true')
     } else {
-      navbar.current?.setAttribute('data-visible', 'false')
-      navToggle.current?.setAttribute('aria-expanded', 'false')
+      closeNavbar()
     }
   }
 
@@ -36,8 +41,10 @@ function Navbar() {
   }
 
   useEffect(() => {
-    // close the navbar when the page changes
-    toggleNavbar()
+    if(sideNavbar.current?.getAttribute('data-visible')) {
+      // close the navbar when the page changes
+      closeNavbar()
+    }
     setSignIn()
   }, [location.pathname])
 
@@ -51,7 +58,7 @@ function Navbar() {
             <NavLink id="logo" to="/"><img src={logo} width={30} height={30}/></NavLink>
           </div>
           <nav id='header-nav'>
-            <ul ref={navbar} data-visible="false" className='nav-list'>
+            <ul ref={sideNavbar} data-visible="false" className='nav-list'>
               <li className='nav-item'><NavLink className='nav-link' to="/">Home</NavLink></li>
               <li className='nav-item'><NavLink className='nav-link' to="/displaced">Displaced Persons</NavLink></li>
               <li id='about' className='nav-item'><NavLink className='nav-link' to="/about">About</NavLink></li>
@@ -71,8 +78,7 @@ function Navbar() {
                 <li className='nav-item'><button id='signout-button' onClick={signOutUser}>Sign out</button></li>
               </>)
               }
-            </ul>
-              
+            </ul>       
           </nav>
       </header>
     )
