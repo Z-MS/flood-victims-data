@@ -14,19 +14,14 @@ function Navbar() {
   const sideNavbar = useRef<HTMLUListElement | null>(null)
   const navToggle = useRef<HTMLButtonElement | null>(null)
 
-  function closeNavbar() {
-      // close navbar is specific to onComponentMount
-      sideNavbar.current?.setAttribute('data-visible', 'false')
-      navToggle.current?.setAttribute('aria-expanded', 'false')
-  }
-
   function toggleNavbar() {
     const visibility = sideNavbar.current?.getAttribute('data-visible')
     if(visibility === 'false') {
       sideNavbar.current?.setAttribute('data-visible', 'true')
       navToggle.current?.setAttribute('aria-expanded', 'true')
     } else {
-      closeNavbar()
+      sideNavbar.current?.setAttribute('data-visible', 'false')
+      navToggle.current?.setAttribute('aria-expanded', 'false')
     }
   }
 
@@ -43,7 +38,7 @@ function Navbar() {
   useEffect(() => {
     if(sideNavbar.current?.getAttribute('data-visible')) {
       // close the navbar when the page changes
-      closeNavbar()
+      toggleNavbar()
     }
     setSignIn()
   }, [location.pathname])
