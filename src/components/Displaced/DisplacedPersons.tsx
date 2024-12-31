@@ -8,13 +8,17 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import { Link } from "react-router-dom"
 import Notification from "../Notification"
+import { sendEmailVerification } from "firebase/auth"
+import { auth } from "../../firebase-config"
 
 function DisplacedPersons() {
     const { isUserSignedIn, isUserEmailVerified, authStateLoading } = useAuthenticationStore()
     const displacedPersons = useDisplacedPersonsStore((state: any) => state.displacedPersons)
-    const [successNotificationOpen, setSuccessNotification] = useState<boolean | undefined>(undefined) 
-    
     const { fetchDisplacedPersons, displacedDataLoading } = useDisplacedPersonsStore()
+    const [sendingVerification, setSendingVerification] = useState(false)
+    const [sentVerification, setSentVerification] = useState(false)
+
+    const [successNotificationOpen, setSuccessNotification] = useState<boolean | undefined>(undefined) 
     
     const createDialog = useRef<HTMLDialogElement>(null)
 
@@ -63,8 +67,20 @@ function DisplacedPersons() {
         if(!isUserEmailVerified) {
             return (
                 <div>
-                    <p>Please check your email inbox to verify your email address</p>
-                    <button className="button notice">Resend link</button>
+                    <Notification message="Successfully resent verification email" type="info" isVisible={sentVerification}/>
+                    <Notification 
+                        message="Please check your email inbox to verify your email address"
+                        type="warning"
+                        isVisible={!isUserEmailVerified}
+                    />
+                    <button onClick={
+                        async() => {
+                            setSendingVerification(true)
+                            await sendEmailVerification(auth.currentUser!)
+                            setSendingVerification(false)
+                            setSentVerification(true)
+                        }} 
+                    className={`button is-rounded is-info ` + (sendingVerification ? "is-loading": "")} type="submit">Resend verification email</button>
                 </div>
             )
         }
@@ -78,7 +94,7 @@ function DisplacedPersons() {
                 )
                 :
                 (<div>  
-                    <Notification type="success" message="Data added successfully" isOpen={successNotificationOpen}/>
+                    <Notification type="success" message="Data added successfully" isVisible={successNotificationOpen}/>
 
                     <button className="button is-rounded" id="add__button" onClick={openCreateForm}>Add displaced person</button>
                     <dialog ref={createDialog} id="add-displaced-dialog">

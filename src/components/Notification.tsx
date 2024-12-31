@@ -5,21 +5,21 @@ type NotificationProps = {
     message: String,
     type: String,
     includeButton?: boolean,
-    isOpen: boolean | undefined
+    isVisible: boolean | undefined
 }
 
-function Notification ({ message, type, includeButton, isOpen }: NotificationProps) {
+function Notification ({ message, type, includeButton, isVisible }: NotificationProps) {
     const notificationBox = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
-        if(isOpen) {
+        if(isVisible) {
             notificationBox.current?.classList.remove("fade-out")
             notificationBox.current?.classList.add("fade-in")
         } else {
             notificationBox.current?.classList.remove("fade-in")
             notificationBox.current?.classList.add("fade-out")
         }
-    }, [isOpen])
+    }, [isVisible])
 
     return (
         <div className={"notification is-light " + "is-" + type} ref={notificationBox}>

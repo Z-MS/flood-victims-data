@@ -22,7 +22,7 @@ type DisplacedPersonFields = z.infer<typeof schema>
 
 export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
     const { register, handleSubmit, reset, setError, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<DisplacedPersonFields>({resolver: zodResolver(schema)})
-    
+
     const addDisplacedPerson: SubmitHandler<DisplacedPersonFields> = async(data) => {
         try {
             await addDoc(collection(db, "displaced"), {
@@ -163,7 +163,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                         { errors.root?.message }
                     </div>}
                     <div>
-                    <button className={`button is-rounded is-success submit__button ` + (isSubmitting ? "is-loading": "")} type="submit">Submit</button>
+                        <button className={`button is-rounded is-success submit__button ` + (isSubmitting ? "is-loading": "")} type="submit">Submit</button>
                     </div>
                 </div>
             </form>
