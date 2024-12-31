@@ -1,6 +1,6 @@
 import '../styles/Footer.css';
 import logo from '../assets/logo.jpg';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 function Footer() {
     const today = new Date();

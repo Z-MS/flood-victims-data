@@ -29,9 +29,11 @@ function App() {
   return (
     <>
         <Navbar/>
+        { !onHomepage && (
           <div className="container">
             <Outlet/>
-          </div>
+          </div>)
+        }
           {
             onHomepage && (
               <>
@@ -41,7 +43,7 @@ function App() {
                       <h1>Swift Relief Foundation</h1>
                       <p id="subtitle">Maiduguri Flood Victims Data Capture</p>
                       <div className='button-links'>
-                        <span id="stats-link-button" className='button-link'><NavLink to="/">View the Statistics</NavLink></span>
+                        <span id="stats-link-button" className='button-link'><a href="#stats-section">View the Statistics</a></span>
                         <span id="project-link-button" className='button-link'><NavLink to="/">Learn About the Project</NavLink></span>
                       </div>
                     </div>

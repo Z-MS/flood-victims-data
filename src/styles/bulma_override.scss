@@ -1,4 +1,15 @@
 @use "bulma/sass/themes";
+@use "bulma/sass/base/animations";
+@use "bulma/sass/elements/loader";
+@use "bulma/sass/elements/button" with (
+    $button-text-color: white
+);
+@use "bulma/sass/elements/notification" with (
+    $notification-padding: 0.25rem
+);
+@use "bulma/sass/elements/delete";
+
+// change success button color to the one I used for add
 
 @use "bulma/sass/form" with (
     $label-color: '#2e333d'

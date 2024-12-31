@@ -7,14 +7,16 @@ import { AgGridReact } from 'ag-grid-react';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import { Link } from "react-router-dom"
+import Notification from "../Notification"
 
 function DisplacedPersons() {
     const { isUserSignedIn, isUserEmailVerified, authStateLoading } = useAuthenticationStore()
     const displacedPersons = useDisplacedPersonsStore((state: any) => state.displacedPersons)
+    const [successNotificationOpen, setSuccessNotification] = useState<boolean | undefined>(undefined) 
     
     const { fetchDisplacedPersons, displacedDataLoading } = useDisplacedPersonsStore()
     
-    const dialog = useRef<HTMLDialogElement>(null)
+    const createDialog = useRef<HTMLDialogElement>(null)
 
     const defaultColDef = useMemo(() => ({
         filter: true
@@ -36,15 +38,17 @@ function DisplacedPersons() {
     ])
 
     function openCreateForm() {
-        dialog.current?.showModal()
+        createDialog.current?.showModal()
     }
 
     function closeCreateForm(message: string) {
         if(message === 'create') {
             // fetch data from Firebase
             fetchDisplacedPersons()
+            setSuccessNotification(true)
+            setTimeout(() => setSuccessNotification(false), 2100)
         }
-        dialog.current?.close()
+        createDialog.current?.close()
     }
 
     if(!authStateLoading) {
@@ -55,7 +59,7 @@ function DisplacedPersons() {
                 </div>
             )
         } 
-        
+
         if(!isUserEmailVerified) {
             return (
                 <div>
@@ -73,9 +77,11 @@ function DisplacedPersons() {
                     <p>Checking login status...</p>
                 )
                 :
-                (<div>    
-                    <button className="button add__button" onClick={openCreateForm}>Add displaced person</button>
-                    <dialog ref={dialog} id="add-displaced-dialog">
+                (<div>  
+                    <Notification type="success" message="Data added successfully" isOpen={successNotificationOpen}/>
+
+                    <button className="button is-rounded" id="add__button" onClick={openCreateForm}>Add displaced person</button>
+                    <dialog ref={createDialog} id="add-displaced-dialog">
                         <AddDisplaced onDisplacedPersonAdded={closeCreateForm}/>
                     </dialog>
                     <div className="ag-theme-quartz"style={{height: 500}}>

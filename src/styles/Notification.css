@@ -1,0 +1,36 @@
+div.notification {
+    display: none;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+
+    100% {
+        opacity: 1;
+        display: block;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        display: block;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+div.fade-in {
+    display: block;
+    animation: fade-in 0.3s ease-in forwards;
+}
+
+div.fade-out {
+    animation: fade-out 2s ease-out forwards;
+}

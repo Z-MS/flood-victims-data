@@ -48,7 +48,7 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
 
     return (
         <div>
-            <button className="button danger__button" onClick={cancel}>Cancel</button>
+            <button className="button is-rounded is-danger" onClick={cancel}>Cancel</button>
             <form onSubmit={handleSubmit(addDisplacedPerson)}>
                 <div className="form__container">
                         <div className="field">
@@ -162,8 +162,8 @@ export default function AddDisplaced({ onDisplacedPersonAdded }: any) {
                     {errors.root && <div className="error">
                         { errors.root?.message }
                     </div>}
-                    <div className="field">
-                        <input disabled={isSubmitting} className="submit__button" type="submit" value="Submit"/>
+                    <div>
+                    <button className={`button is-rounded is-success submit__button ` + (isSubmitting ? "is-loading": "")} type="submit">Submit</button>
                     </div>
                 </div>
             </form>

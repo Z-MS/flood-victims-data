@@ -53,7 +53,7 @@ function Signin() {
                         )}
                     </div>
                     <div>
-                        <input disabled={isSubmitting} className="submit__button" type="submit" value="Submit"/>
+                        <button className={`button is-rounded is-success submit__button ` + (isSubmitting ? "is-loading": "")} type="submit">Submit</button>
                     </div>
                     {errors.root && <div className="help is-danger">
                         { errors.root?.message }
