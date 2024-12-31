@@ -50,7 +50,7 @@ function App() {
                   </div>
                 </section>
 
-                <main data-theme="light">
+                <main>
                   <section id='stats-section'>
                     <h2 className='section-title'>Statistics</h2>
                     {
