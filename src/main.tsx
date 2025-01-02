@@ -1,10 +1,11 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import App from './App.tsx'
 import './index.css'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { createRoot } from 'react-dom/client'
+import { StrictMode, Suspense, lazy } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Skeleton from 'react-loading-skeleton'
+import App from './App.tsx'
 import ErrorPage from './components/ErrorPage.tsx'
-import DisplacedPersons from './components/Displaced/DisplacedPersons.tsx'
 import Signup from './components/Auth/Signup.tsx'
 import Signin from './components/Auth/Signin.tsx'
 import ResetPassword from './components/Auth/ResetPassword.tsx'
@@ -13,6 +14,7 @@ import EmailAction from './components/Auth/EmailAction.tsx'
 import About from './components/About.tsx'
 import Contact from './components/Contact.tsx'
 
+const DisplacedPersons = lazy(() => import('./components/Displaced/DisplacedPersons.tsx'))
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,7 +31,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/displaced",
-        element: <DisplacedPersons />
+        element: 
+        <Suspense fallback={<Skeleton/>}>
+          <DisplacedPersons />
+        </Suspense>
       },
       {
         path: "/signup",
